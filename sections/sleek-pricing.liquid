@@ -1,0 +1,675 @@
+{{ 'section-sleek-pricing.css' | asset_url | stylesheet_tag }}
+
+<div class="sleek-pricing-section sleek-section">
+  <div class="sleek-container">
+    
+    <!-- Section Header -->
+    <div class="sleek-pricing-header">
+      <div class="sleek-pricing-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>{{ section.settings.badge_text }}</span>
+      </div>
+      <h2 class="sleek-pricing-title">{{ section.settings.title }}</h2>
+      <p class="sleek-pricing-description">{{ section.settings.description }}</p>
+      
+      <!-- Billing Toggle -->
+      {% if section.settings.show_billing_toggle %}
+        <div class="sleek-billing-toggle">
+          <span class="sleek-billing-label">Mesečno</span>
+          <label class="sleek-toggle-switch">
+            <input type="checkbox" id="billingToggle">
+            <span class="sleek-toggle-slider"></span>
+          </label>
+          <span class="sleek-billing-label">
+            Godišnje 
+            <span class="sleek-billing-discount">Uštedi 20%</span>
+          </span>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="sleek-pricing-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'pricing_plan' %}
+          <div class="sleek-pricing-card sleek-glass-card {% if block.settings.is_popular %}sleek-pricing-popular{% endif %}" {{ block.shopify_attributes }}>
+            
+            {% if block.settings.is_popular %}
+              <div class="sleek-popular-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+                </svg>
+                Najpopularnije
+              </div>
+            {% endif %}
+
+            <div class="sleek-pricing-plan-header">
+              <div class="sleek-plan-icon" style="background: {{ block.settings.icon_color }};">
+                {{ block.settings.icon_svg }}
+              </div>
+              <h3 class="sleek-plan-name">{{ block.settings.plan_name }}</h3>
+              <p class="sleek-plan-description">{{ block.settings.plan_description }}</p>
+            </div>
+
+            <div class="sleek-pricing-price">
+              <div class="sleek-price-wrapper">
+                <span class="sleek-price-currency">€</span>
+                <span class="sleek-price-amount" data-monthly="{{ block.settings.monthly_price }}" data-yearly="{{ block.settings.yearly_price }}">
+                  {{ block.settings.monthly_price }}
+                </span>
+                <span class="sleek-price-period">/mesec</span>
+              </div>
+              {% if block.settings.yearly_price != blank %}
+                <p class="sleek-price-yearly">ili €{{ block.settings.yearly_price }}/godišnje</p>
+              {% endif %}
+            </div>
+
+            {% if block.settings.features_list != blank %}
+              <ul class="sleek-pricing-features">
+                {% assign features = block.settings.features_list | split: '|' %}
+                {% for feature in features %}
+                  <li class="sleek-pricing-feature">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+                      <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ feature }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            <a href="{{ block.settings.button_link }}" class="sleek-pricing-button {% if block.settings.is_popular %}sleek-btn-primary{% else %}sleek-btn-glass{% endif %}">
+              {{ block.settings.button_text }}
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+
+            {% if block.settings.note != blank %}
+              <p class="sleek-pricing-note">{{ block.settings.note }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Trust Badges -->
+    {% if section.settings.show_trust_badges %}
+      <div class="sleek-trust-badges">
+        <p class="sleek-trust-text">{{ section.settings.trust_text }}</p>
+        <div class="sleek-trust-icons">
+          <div class="sleek-trust-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/>
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>SSL Sigurnost</span>
+          </div>
+          <div class="sleek-trust-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>GDPR Compliant</span>
+          </div>
+          <div class="sleek-trust-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>Sigurna Naplata</span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<style>
+.sleek-pricing-section {
+  padding: 100px 0;
+  position: relative;
+}
+
+/* Header */
+.sleek-pricing-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.sleek-pricing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(48, 209, 88, 0.1));
+  border: 1px solid rgba(52, 199, 89, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--sleek-success);
+  margin-bottom: 24px;
+}
+
+.sleek-pricing-badge svg {
+  color: var(--sleek-success);
+}
+
+.sleek-pricing-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: var(--font-weight-heavy);
+  line-height: 1.2;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+}
+
+.sleek-pricing-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--sleek-gray-600);
+  margin: 0 0 32px;
+}
+
+/* Billing Toggle */
+.sleek-billing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+}
+
+.sleek-billing-label {
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  color: var(--sleek-gray-700);
+}
+
+.sleek-billing-discount {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--sleek-success);
+  color: white;
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-sm);
+  margin-left: 4px;
+}
+
+.sleek-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.sleek-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.sleek-toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--sleek-gray-300);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+}
+
+.sleek-toggle-slider::before {
+  content: '';
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.sleek-toggle-switch input:checked + .sleek-toggle-slider {
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+}
+
+.sleek-toggle-switch input:checked + .sleek-toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* Pricing Grid */
+.sleek-pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 750px) {
+  .sleek-pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 990px) {
+  .sleek-pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Pricing Card */
+.sleek-pricing-card {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.sleek-pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
+}
+
+.sleek-pricing-popular {
+  border: 2px solid var(--sleek-primary);
+  transform: scale(1.05);
+}
+
+.sleek-pricing-popular:hover {
+  transform: scale(1.05) translateY(-8px);
+}
+
+.sleek-popular-badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  color: white;
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  white-space: nowrap;
+}
+
+.sleek-popular-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Plan Header */
+.sleek-pricing-plan-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.sleek-plan-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: var(--shadow-lg);
+}
+
+.sleek-plan-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.sleek-plan-name {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 8px;
+}
+
+.sleek-plan-description {
+  font-size: 14px;
+  color: var(--sleek-gray-600);
+  margin: 0;
+}
+
+/* Pricing */
+.sleek-pricing-price {
+  text-align: center;
+  padding: 24px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--sleek-gray-200);
+}
+
+.sleek-price-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.sleek-price-currency {
+  font-size: 24px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--sleek-gray-600);
+}
+
+.sleek-price-amount {
+  font-size: 56px;
+  font-weight: var(--font-weight-heavy);
+  line-height: 1;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sleek-price-period {
+  font-size: 16px;
+  color: var(--sleek-gray-600);
+}
+
+.sleek-price-yearly {
+  font-size: 13px;
+  color: var(--sleek-gray-500);
+  margin: 0;
+}
+
+/* Features List */
+.sleek-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.sleek-pricing-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--sleek-gray-700);
+}
+
+.sleek-pricing-feature svg {
+  color: var(--sleek-success);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Button */
+.sleek-pricing-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  font-family: var(--font-ios);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  margin-bottom: 12px;
+}
+
+.sleek-pricing-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--sleek-gray-500);
+  margin: 0;
+}
+
+/* Trust Badges */
+.sleek-trust-badges {
+  text-align: center;
+  padding-top: 60px;
+  border-top: 1px solid var(--sleek-gray-200);
+}
+
+.sleek-trust-text {
+  font-size: 14px;
+  color: var(--sleek-gray-600);
+  margin: 0 0 24px;
+}
+
+.sleek-trust-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.sleek-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--sleek-gray-700);
+}
+
+.sleek-trust-item svg {
+  color: var(--sleek-success);
+}
+
+/* Animations */
+.sleek-pricing-card {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.sleek-pricing-card:nth-child(1) { animation-delay: 0.1s; }
+.sleek-pricing-card:nth-child(2) { animation-delay: 0.2s; }
+.sleek-pricing-card:nth-child(3) { animation-delay: 0.3s; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.getElementById('billingToggle');
+  if (!toggle) return;
+
+  toggle.addEventListener('change', function() {
+    const isYearly = this.checked;
+    const prices = document.querySelectorAll('.sleek-price-amount');
+    
+    prices.forEach(price => {
+      const monthly = price.getAttribute('data-monthly');
+      const yearly = price.getAttribute('data-yearly');
+      
+      if (yearly) {
+        price.textContent = isYearly ? yearly : monthly;
+      }
+    });
+
+    const periods = document.querySelectorAll('.sleek-price-period');
+    periods.forEach(period => {
+      period.textContent = isYearly ? '/godišnje' : '/mesec';
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Sleek Pricing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Transparentne cene"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Izaberite Paket za Vaše Potrebe"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Bez skrivenih troškova. Otkažite bilo kada. Sve funkcionalnosti u svakom paketu."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_billing_toggle",
+      "label": "Show Billing Toggle",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Trust Badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badges",
+      "label": "Show Trust Badges",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_text",
+      "label": "Trust Text",
+      "default": "Sigurno i pouzdano"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pricing_plan",
+      "name": "Pricing Plan",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG",
+          "default": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/><circle cx='12' cy='7' r='4'/></svg>"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "linear-gradient(135deg, #007AFF, #5856D6)"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_popular",
+          "label": "Mark as Popular",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "plan_name",
+          "label": "Plan Name",
+          "default": "Starter"
+        },
+        {
+          "type": "textarea",
+          "id": "plan_description",
+          "label": "Plan Description",
+          "default": "Za mala preduzeća"
+        },
+        {
+          "type": "text",
+          "id": "monthly_price",
+          "label": "Monthly Price",
+          "default": "29"
+        },
+        {
+          "type": "text",
+          "id": "yearly_price",
+          "label": "Yearly Price (optional)",
+          "default": "290"
+        },
+        {
+          "type": "textarea",
+          "id": "features_list",
+          "label": "Features List (separate with |)",
+          "default": "Do 100 termina mesečno|Osnovna kalendar integracija|Email notifikacije|5 korisnika"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Započni"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "note",
+          "label": "Note (optional)",
+          "default": "7 dana probni period"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sleek Pricing",
+      "blocks": [
+        {
+          "type": "pricing_plan",
+          "settings": {
+            "plan_name": "Starter",
+            "plan_description": "Za mala preduzeća",
+            "monthly_price": "29",
+            "yearly_price": "290",
+            "features_list": "Do 100 termina mesečno|Email notifikacije|Kalendar sync|5 korisnika|Email podrška",
+            "note": "7 dana besplatno"
+          }
+        },
+        {
+          "type": "pricing_plan",
+          "settings": {
+            "icon_color": "linear-gradient(135deg, #5856D6, #8E44AD)",
+            "is_popular": true,
+            "plan_name": "Professional",
+            "plan_description": "Za rastuća preduzeća",
+            "monthly_price": "79",
+            "yearly_price": "790",
+            "features_list": "Neograničeni termini|SMS + Email notifikacije|AI asistent|20 korisnika|Priority podrška|Napredna analitika",
+            "note": "14 dana besplatno"
+          }
+        },
+        {
+          "type": "pricing_plan",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/></svg>",
+            "icon_color": "linear-gradient(135deg, #FF9500, #FFB800)",
+            "plan_name": "Enterprise",
+            "plan_description": "Za velike organizacije",
+            "monthly_price": "199",
+            "yearly_price": "1990",
+            "features_list": "Sve iz Professional|Neograničeni korisnici|Dedicirani account manager|Custom integracije|SLA garantija|White label",
+            "button_text": "Kontaktirajte nas",
+            "note": "Personalizovane cene"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
