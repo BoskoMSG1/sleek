@@ -1,0 +1,612 @@
+{{ 'section-sleek-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="sleek-hero-section sleek-section">
+  <div class="sleek-container">
+    <div class="sleek-hero-grid">
+      
+      <!-- Left Content -->
+      <div class="sleek-hero-content">
+        <div class="sleek-hero-badge">
+          <span class="sleek-badge-dot"></span>
+          <span>{{ section.settings.badge_text }}</span>
+        </div>
+        
+        <h1 class="sleek-hero-title">
+          {{ section.settings.title }}
+        </h1>
+        
+        <p class="sleek-hero-description">
+          {{ section.settings.description }}
+        </p>
+        
+        <div class="sleek-hero-features">
+          {% if section.settings.feature_1 != blank %}
+          <div class="sleek-feature-item">
+            <svg class="sleek-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>{{ section.settings.feature_1 }}</span>
+          </div>
+          {% endif %}
+          
+          {% if section.settings.feature_2 != blank %}
+          <div class="sleek-feature-item">
+            <svg class="sleek-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>{{ section.settings.feature_2 }}</span>
+          </div>
+          {% endif %}
+          
+          {% if section.settings.feature_3 != blank %}
+          <div class="sleek-feature-item">
+            <svg class="sleek-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>{{ section.settings.feature_3 }}</span>
+          </div>
+          {% endif %}
+        </div>
+        
+        <div class="sleek-hero-buttons">
+          {% if section.settings.button_primary_text != blank %}
+          <a href="{{ section.settings.button_primary_link }}" class="sleek-btn sleek-btn-primary">
+            {{ section.settings.button_primary_text }}
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          {% endif %}
+          
+          {% if section.settings.button_secondary_text != blank %}
+          <a href="{{ section.settings.button_secondary_link }}" class="sleek-btn sleek-btn-glass">
+            {{ section.settings.button_secondary_text }}
+          </a>
+          {% endif %}
+        </div>
+        
+        <div class="sleek-hero-stats">
+          {% if section.settings.stat_1_number != blank %}
+          <div class="sleek-stat">
+            <div class="sleek-stat-number">{{ section.settings.stat_1_number }}</div>
+            <div class="sleek-stat-label">{{ section.settings.stat_1_label }}</div>
+          </div>
+          {% endif %}
+          
+          {% if section.settings.stat_2_number != blank %}
+          <div class="sleek-stat">
+            <div class="sleek-stat-number">{{ section.settings.stat_2_number }}</div>
+            <div class="sleek-stat-label">{{ section.settings.stat_2_label }}</div>
+          </div>
+          {% endif %}
+          
+          {% if section.settings.stat_3_number != blank %}
+          <div class="sleek-stat">
+            <div class="sleek-stat-number">{{ section.settings.stat_3_number }}</div>
+            <div class="sleek-stat-label">{{ section.settings.stat_3_label }}</div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- Right Content - Booking Demo -->
+      <div class="sleek-hero-visual">
+        <div class="sleek-booking-card sleek-glass-card sleek-float">
+          <div class="sleek-booking-header">
+            <div class="sleek-booking-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="sleek-booking-title">Zakažite Termin</h3>
+              <p class="sleek-booking-subtitle">Brzo i jednostavno</p>
+            </div>
+          </div>
+          
+          <div class="sleek-booking-content">
+            <div class="sleek-input-group">
+              <label class="sleek-label">Izaberite Uslugu</label>
+              <div class="sleek-input-wrapper">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M17.5 17.5l-3.625-3.625m2.125-5a7.125 7.125 0 11-14.25 0 7.125 7.125 0 0114.25 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <input type="text" class="sleek-input" placeholder="Pretraži usluge..." readonly>
+              </div>
+            </div>
+            
+            <div class="sleek-date-time-grid">
+              <div class="sleek-input-group">
+                <label class="sleek-label">Datum</label>
+                <div class="sleek-input-wrapper">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="2.5" y="3.333" width="15" height="15" rx="1.667" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M13.333 1.667v3.333M6.667 1.667v3.333M2.5 8.333h15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <input type="text" class="sleek-input" placeholder="Izaberi datum" readonly>
+                </div>
+              </div>
+              
+              <div class="sleek-input-group">
+                <label class="sleek-label">Vreme</label>
+                <div class="sleek-input-wrapper">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M10 5.833V10h4.167" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <input type="text" class="sleek-input" placeholder="Izaberi vreme" readonly>
+                </div>
+              </div>
+            </div>
+            
+            <button class="sleek-booking-btn">
+              <span>Potvrdi Rezervaciju</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M3.333 10h13.334M12.5 4.167L18.333 10 12.5 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="sleek-booking-features">
+            <div class="sleek-booking-feature">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M13.333 4L6 11.333 2.667 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Instant potvrda</span>
+            </div>
+            <div class="sleek-booking-feature">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M13.333 4L6 11.333 2.667 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>SMS notifikacije</span>
+            </div>
+            <div class="sleek-booking-feature">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M13.333 4L6 11.333 2.667 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Kalendar sync</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="sleek-floating-card sleek-glass" style="top: 10%; right: -10%;">
+          <div class="sleek-floating-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <div class="sleek-floating-value">4.9/5</div>
+            <div class="sleek-floating-label">Ocena korisnika</div>
+          </div>
+        </div>
+        
+        <div class="sleek-floating-card sleek-glass" style="bottom: 15%; left: -5%;">
+          <div class="sleek-floating-icon" style="background: linear-gradient(135deg, #34C759, #30D158);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="sleek-floating-value">10,000+</div>
+            <div class="sleek-floating-label">Zakazanih termina</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<style>
+.sleek-hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 120px;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.sleek-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (min-width: 990px) {
+  .sleek-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+}
+
+/* Left Content */
+.sleek-hero-content {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.sleek-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--sleek-primary);
+  margin-bottom: 24px;
+}
+
+.sleek-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--sleek-success);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.sleek-hero-title {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: var(--font-weight-heavy);
+  line-height: 1.1;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.sleek-hero-description {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--sleek-gray-700);
+  margin: 0 0 32px;
+  max-width: 540px;
+}
+
+.sleek-hero-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.sleek-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: var(--sleek-gray-700);
+}
+
+.sleek-feature-item .sleek-icon {
+  color: var(--sleek-success);
+  flex-shrink: 0;
+}
+
+.sleek-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.sleek-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--sleek-gray-200);
+}
+
+.sleek-stat {
+  text-align: center;
+}
+
+.sleek-stat-number {
+  font-size: 32px;
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+
+.sleek-stat-label {
+  font-size: 14px;
+  color: var(--sleek-gray-600);
+}
+
+/* Right Visual */
+.sleek-hero-visual {
+  position: relative;
+  animation: fadeInScale 1s ease-out 0.3s both;
+}
+
+.sleek-booking-card {
+  padding: 32px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.sleek-booking-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sleek-booking-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.sleek-booking-title {
+  font-size: 20px;
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 4px;
+}
+
+.sleek-booking-subtitle {
+  font-size: 14px;
+  color: var(--sleek-gray-600);
+  margin: 0;
+}
+
+.sleek-booking-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sleek-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sleek-label {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--sleek-gray-700);
+}
+
+.sleek-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sleek-input-wrapper svg {
+  position: absolute;
+  left: 14px;
+  color: var(--sleek-gray-500);
+  pointer-events: none;
+}
+
+.sleek-input {
+  width: 100%;
+  padding: 12px 12px 12px 44px;
+  background: var(--sleek-gray-50);
+  border: 1.5px solid var(--sleek-gray-200);
+  border-radius: var(--radius-md);
+  font-family: var(--font-ios);
+  font-size: 15px;
+  transition: all var(--transition-base);
+}
+
+.sleek-input:focus {
+  outline: none;
+  border-color: var(--sleek-primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+}
+
+.sleek-date-time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.sleek-booking-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-ios);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  margin-top: 8px;
+}
+
+.sleek-booking-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 122, 255, 0.4);
+}
+
+.sleek-booking-features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--sleek-gray-200);
+}
+
+.sleek-booking-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--sleek-gray-600);
+}
+
+.sleek-booking-feature svg {
+  color: var(--sleek-success);
+}
+
+/* Floating Cards */
+.sleek-floating-card {
+  position: absolute;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: float 6s ease-in-out infinite;
+  box-shadow: var(--shadow-xl);
+}
+
+.sleek-floating-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--sleek-warning), #FFB800);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.sleek-floating-value {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  color: var(--sleek-dark);
+}
+
+.sleek-floating-label {
+  font-size: 12px;
+  color: var(--sleek-gray-600);
+}
+
+@media (max-width: 989px) {
+  .sleek-floating-card {
+    display: none;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Sleek Booking Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Premium Booking System"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Hero Title",
+      "default": "Booking<br>Website koji<br>Vaši Klijenti<br><span class='sleek-gradient-text'>Obožavaju</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Profesionalan booking sistem sa AI integracijom, automatskim notifikacijama i sinhronizacijom sa svim kalendarima."
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "Automatska sinhronizacija sa Apple, Google i Outlook kalendarima"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "AI asistent za instant podršku klijentima 24/7"
+    },
+    {
+      "type": "text",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "SMS i email notifikacije u realnom vremenu"
+    },
+    {
+      "type": "text",
+      "id": "button_primary_text",
+      "label": "Primary Button Text",
+      "default": "Započni Besplatno"
+    },
+    {
+      "type": "url",
+      "id": "button_primary_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_text",
+      "label": "Secondary Button Text",
+      "default": "Pogledaj Demo"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Stat 1 Number",
+      "default": "10k+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 Label",
+      "default": "Aktivnih korisnika"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Stat 2 Number",
+      "default": "99.9%"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 Label",
+      "default": "Uptime"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Stat 3 Number",
+      "default": "24/7"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 Label",
+      "default": "Podrška"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sleek Booking Hero"
+    }
+  ]
+}
+{% endschema %}
