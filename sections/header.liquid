@@ -1,0 +1,471 @@
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
+
+<header class="sleek-header" id="sleekHeader">
+  <div class="sleek-header-container">
+    
+    <!-- Logo -->
+    <div class="sleek-logo">
+      {% if section.settings.logo != blank %}
+        <a href="{{ routes.root_url }}">
+          <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" loading="lazy" width="120" height="40">
+        </a>
+      {% else %}
+        <a href="{{ routes.root_url }}" class="sleek-logo-text">
+          {{ shop.name }}
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="sleek-nav-desktop">
+      <ul class="sleek-nav-list">
+        {% for link in section.settings.menu.links %}
+          <li class="sleek-nav-item">
+            <a href="{{ link.url }}" class="sleek-nav-link {% if link.active %}active{% endif %}">
+              {{ link.title }}
+            </a>
+            
+            {% if link.links != blank %}
+              <div class="sleek-dropdown">
+                <div class="sleek-dropdown-inner">
+                  {% for child_link in link.links %}
+                    <a href="{{ child_link.url }}" class="sleek-dropdown-link">
+                      <span>{{ child_link.title }}</span>
+                      <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                        <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="sleek-header-actions">
+      
+      <!-- CTA Button -->
+      {% if section.settings.show_cta_button %}
+        <a href="{{ section.settings.cta_link }}" class="sleek-btn sleek-btn-primary sleek-header-cta">
+          {{ section.settings.cta_text }}
+        </a>
+      {% endif %}
+
+      <!-- Mobile Menu Toggle -->
+      <button class="sleek-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+        <span class="sleek-toggle-line"></span>
+        <span class="sleek-toggle-line"></span>
+        <span class="sleek-toggle-line"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="sleek-mobile-menu" id="sleekMobileMenu">
+    <div class="sleek-mobile-menu-inner">
+      <nav class="sleek-mobile-nav">
+        <ul class="sleek-mobile-nav-list">
+          {% for link in section.settings.menu.links %}
+            <li class="sleek-mobile-nav-item">
+              <a href="{{ link.url }}" class="sleek-mobile-nav-link">
+                {{ link.title }}
+              </a>
+              
+              {% if link.links != blank %}
+                <ul class="sleek-mobile-submenu">
+                  {% for child_link in link.links %}
+                    <li>
+                      <a href="{{ child_link.url }}" class="sleek-mobile-submenu-link">
+                        {{ child_link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      {% if section.settings.show_cta_button %}
+        <div class="sleek-mobile-cta">
+          <a href="{{ section.settings.cta_link }}" class="sleek-btn sleek-btn-primary" style="width: 100%;">
+            {{ section.settings.cta_text }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+<style>
+.sleek-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: var(--blur-medium);
+  -webkit-backdrop-filter: var(--blur-medium);
+  border-bottom: 1px solid var(--glass-border);
+  transition: all var(--transition-base);
+}
+
+.sleek-header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-md);
+}
+
+.sleek-header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Logo */
+.sleek-logo a {
+  display: flex;
+  align-items: center;
+}
+
+.sleek-logo img {
+  display: block;
+  max-height: 40px;
+  width: auto;
+}
+
+.sleek-logo-text {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+/* Desktop Navigation */
+.sleek-nav-desktop {
+  flex: 1;
+  display: none;
+}
+
+@media (min-width: 990px) {
+  .sleek-nav-desktop {
+    display: block;
+  }
+}
+
+.sleek-nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sleek-nav-item {
+  position: relative;
+}
+
+.sleek-nav-link {
+  display: block;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  color: var(--sleek-gray-700);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.sleek-nav-link:hover,
+.sleek-nav-link.active {
+  color: var(--sleek-primary);
+  background: rgba(0, 122, 255, 0.08);
+}
+
+/* Dropdown */
+.sleek-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+}
+
+.sleek-nav-item:hover .sleek-dropdown {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 12px;
+}
+
+.sleek-dropdown-inner {
+  min-width: 220px;
+  padding: 8px;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-heavy);
+  -webkit-backdrop-filter: var(--blur-heavy);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+}
+
+.sleek-dropdown-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: var(--sleek-gray-700);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.sleek-dropdown-link:hover {
+  background: white;
+  color: var(--sleek-primary);
+}
+
+.sleek-dropdown-link svg {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all var(--transition-fast);
+}
+
+.sleek-dropdown-link:hover svg {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Header Actions */
+.sleek-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sleek-header-cta {
+  display: none;
+}
+
+@media (min-width: 990px) {
+  .sleek-header-cta {
+    display: inline-flex;
+  }
+}
+
+/* Mobile Toggle */
+.sleek-mobile-toggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-base);
+}
+
+@media (min-width: 990px) {
+  .sleek-mobile-toggle {
+    display: none;
+  }
+}
+
+.sleek-toggle-line {
+  width: 24px;
+  height: 2px;
+  background: var(--sleek-dark);
+  border-radius: 2px;
+  transition: all var(--transition-base);
+}
+
+.sleek-mobile-toggle.active .sleek-toggle-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.sleek-mobile-toggle.active .sleek-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.sleek-mobile-toggle.active .sleek-toggle-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.sleek-mobile-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--glass-bg-dark);
+  backdrop-filter: var(--blur-heavy);
+  -webkit-backdrop-filter: var(--blur-heavy);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+  overflow-y: auto;
+}
+
+.sleek-mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sleek-mobile-menu-inner {
+  padding: 24px;
+}
+
+.sleek-mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sleek-mobile-nav-link {
+  display: block;
+  padding: 16px 20px;
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  color: white;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+}
+
+.sleek-mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sleek-mobile-submenu {
+  list-style: none;
+  padding: 8px 0 0 20px;
+  margin: 8px 0 0 0;
+}
+
+.sleek-mobile-submenu-link {
+  display: block;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.sleek-mobile-submenu-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sleek-mobile-cta {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Body lock when menu open */
+body.mobile-menu-open {
+  overflow: hidden;
+}
+</style>
+
+<script>
+function toggleMobileMenu() {
+  const toggle = document.querySelector('.sleek-mobile-toggle');
+  const menu = document.getElementById('sleekMobileMenu');
+  const body = document.body;
+  
+  toggle.classList.toggle('active');
+  menu.classList.toggle('active');
+  body.classList.toggle('mobile-menu-open');
+}
+
+// Close menu on resize
+window.addEventListener('resize', function() {
+  if (window.innerWidth >= 990) {
+    document.querySelector('.sleek-mobile-toggle')?.classList.remove('active');
+    document.getElementById('sleekMobileMenu')?.classList.remove('active');
+    document.body.classList.remove('mobile-menu-open');
+  }
+});
+
+// Header scroll effect
+let lastScroll = 0;
+window.addEventListener('scroll', function() {
+  const header = document.getElementById('sleekHeader');
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+  
+  lastScroll = currentScroll;
+});
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta_button",
+      "label": "Show CTA Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ]
+}
+{% endschema %}
