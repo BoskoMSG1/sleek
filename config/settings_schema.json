@@ -1,0 +1,466 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Sleek Booking",
+    "theme_version": "1.0.0",
+    "theme_author": "Sleek Team",
+    "theme_documentation_url": "https://sleekbooking.com/docs",
+    "theme_support_url": "https://sleekbooking.com/support"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#007AFF"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Color",
+        "default": "#5856D6"
+      },
+      {
+        "type": "header",
+        "content": "Status Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_success",
+        "label": "Success Color",
+        "default": "#34C759"
+      },
+      {
+        "type": "color",
+        "id": "color_warning",
+        "label": "Warning Color",
+        "default": "#FF9500"
+      },
+      {
+        "type": "color",
+        "id": "color_danger",
+        "label": "Danger Color",
+        "default": "#FF3B30"
+      },
+      {
+        "type": "header",
+        "content": "Text Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#1C1C1E"
+      },
+      {
+        "type": "color",
+        "id": "color_text_light",
+        "label": "Light Text Color",
+        "default": "#8E8E93"
+      },
+      {
+        "type": "header",
+        "content": "Background Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_background_secondary",
+        "label": "Secondary Background",
+        "default": "#F2F2F7"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Font Settings"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body Font",
+        "default": "assistant_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_body_size",
+        "label": "Body Font Size",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "assistant_n7"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "label": "Heading Scale",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "unit": "%",
+        "default": 120
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Container Settings"
+      },
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Page Width",
+        "min": 1000,
+        "max": 1600,
+        "step": 100,
+        "unit": "px",
+        "default": 1200
+      },
+      {
+        "type": "range",
+        "id": "section_spacing",
+        "label": "Section Spacing",
+        "min": 60,
+        "max": 140,
+        "step": 10,
+        "unit": "px",
+        "default": 100
+      },
+      {
+        "type": "header",
+        "content": "Border Radius"
+      },
+      {
+        "type": "range",
+        "id": "border_radius",
+        "label": "Default Border Radius",
+        "min": 0,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "default": 12
+      }
+    ]
+  },
+  {
+    "name": "Buttons",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Button Style"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Button Style",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary (Gradient)"
+          },
+          {
+            "value": "solid",
+            "label": "Solid"
+          },
+          {
+            "value": "outline",
+            "label": "Outline"
+          },
+          {
+            "value": "glass",
+            "label": "Glass Effect"
+          }
+        ],
+        "default": "primary"
+      },
+      {
+        "type": "range",
+        "id": "button_border_radius",
+        "label": "Button Border Radius",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "unit": "px",
+        "default": 24
+      },
+      {
+        "type": "checkbox",
+        "id": "button_shadow",
+        "label": "Enable Button Shadow",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Animations",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Animation Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animations",
+        "label": "Enable Animations",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_scroll_animations",
+        "label": "Enable Scroll Animations",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "animation_speed",
+        "label": "Animation Speed",
+        "options": [
+          {
+            "value": "fast",
+            "label": "Fast (0.15s)"
+          },
+          {
+            "value": "normal",
+            "label": "Normal (0.3s)"
+          },
+          {
+            "value": "slow",
+            "label": "Slow (0.5s)"
+          }
+        ],
+        "default": "normal"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Links"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin",
+        "label": "LinkedIn URL"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Business Information"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Email",
+        "default": "hello@sleekbooking.com"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "Phone Number",
+        "default": "+1 (555) 123-4567"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_address",
+        "label": "Address",
+        "default": "123 Business Street, City, State 12345"
+      },
+      {
+        "type": "text",
+        "id": "business_hours",
+        "label": "Business Hours",
+        "default": "Mon-Fri: 9AM-6PM"
+      }
+    ]
+  },
+  {
+    "name": "Custom Code",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom CSS"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS",
+        "info": "Add custom CSS code here"
+      },
+      {
+        "type": "header",
+        "content": "Custom JavaScript"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_js",
+        "label": "Custom JavaScript",
+        "info": "Add custom JavaScript code here (without script tags)"
+      },
+      {
+        "type": "header",
+        "content": "Third-party Scripts"
+      },
+      {
+        "type": "html",
+        "id": "header_code",
+        "label": "Header Code",
+        "info": "Code added to <head>"
+      },
+      {
+        "type": "html",
+        "id": "footer_code",
+        "label": "Footer Code",
+        "info": "Code added before </body>"
+      }
+    ]
+  },
+  {
+    "name": "SEO",
+    "settings": [
+      {
+        "type": "header",
+        "content": "SEO Settings"
+      },
+      {
+        "type": "textarea",
+        "id": "meta_description",
+        "label": "Meta Description",
+        "default": "Professional booking system for modern businesses. Get started today."
+      },
+      {
+        "type": "text",
+        "id": "meta_keywords",
+        "label": "Meta Keywords",
+        "info": "Separate keywords with commas"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_image",
+        "label": "Social Share Image",
+        "info": "Recommended size: 1200x630px"
+      },
+      {
+        "type": "header",
+        "content": "Google Analytics"
+      },
+      {
+        "type": "text",
+        "id": "google_analytics_id",
+        "label": "Google Analytics ID",
+        "info": "Format: G-XXXXXXXXXX"
+      }
+    ]
+  },
+  {
+    "name": "Performance",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Performance Optimization"
+      },
+      {
+        "type": "checkbox",
+        "id": "lazy_load_images",
+        "label": "Lazy Load Images",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "preload_fonts",
+        "label": "Preload Fonts",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "minify_css",
+        "label": "Minify CSS",
+        "default": false,
+        "info": "May affect theme editor preview"
+      }
+    ]
+  },
+  {
+    "name": "Advanced",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Developer Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_dev_mode",
+        "label": "Enable Developer Mode",
+        "default": false,
+        "info": "Shows additional debug information"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_dark_mode",
+        "label": "Enable Dark Mode (Beta)",
+        "default": false,
+        "info": "Experimental dark mode support"
+      },
+      {
+        "type": "text",
+        "id": "custom_theme_class",
+        "label": "Custom Theme Class",
+        "info": "Add a custom class to the body tag"
+      }
+    ]
+  }
+]
