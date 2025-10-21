@@ -13,21 +13,6 @@
       </div>
       <h2 class="sleek-pricing-title">{{ section.settings.title }}</h2>
       <p class="sleek-pricing-description">{{ section.settings.description }}</p>
-      
-      <!-- Billing Toggle -->
-      {% if section.settings.show_billing_toggle %}
-        <div class="sleek-billing-toggle">
-          <span class="sleek-billing-label">Mesečno</span>
-          <label class="sleek-toggle-switch">
-            <input type="checkbox" id="billingToggle">
-            <span class="sleek-toggle-slider"></span>
-          </label>
-          <span class="sleek-billing-label">
-            Godišnje 
-            <span class="sleek-billing-discount">Uštedi 20%</span>
-          </span>
-        </div>
-      {% endif %}
     </div>
 
     <!-- Pricing Cards -->
@@ -41,7 +26,7 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
                 </svg>
-                Najpopularnije
+                Most Popular
               </div>
             {% endif %}
 
@@ -53,18 +38,31 @@
               <p class="sleek-plan-description">{{ block.settings.plan_description }}</p>
             </div>
 
-            <div class="sleek-pricing-price">
-              <div class="sleek-price-wrapper">
-                <span class="sleek-price-currency">€</span>
-                <span class="sleek-price-amount" data-monthly="{{ block.settings.monthly_price }}" data-yearly="{{ block.settings.yearly_price }}">
-                  {{ block.settings.monthly_price }}
-                </span>
-                <span class="sleek-price-period">/mesec</span>
+            <div class="sleek-pricing-breakdown">
+              <div class="sleek-price-item">
+                <span class="sleek-price-label">Setup Fee</span>
+                <div class="sleek-price-amount-wrapper">
+                  <span class="sleek-price-currency">€</span>
+                  <span class="sleek-price-amount">{{ block.settings.setup_price }}</span>
+                  <span class="sleek-price-once">one-time</span>
+                </div>
               </div>
-              {% if block.settings.yearly_price != blank %}
-                <p class="sleek-price-yearly">ili €{{ block.settings.yearly_price }}/godišnje</p>
-              {% endif %}
+              
+              <div class="sleek-price-divider">+</div>
+              
+              <div class="sleek-price-item">
+                <span class="sleek-price-label">Monthly</span>
+                <div class="sleek-price-amount-wrapper">
+                  <span class="sleek-price-currency">€</span>
+                  <span class="sleek-price-amount">{{ block.settings.monthly_price }}</span>
+                  <span class="sleek-price-period">/month</span>
+                </div>
+              </div>
             </div>
+
+            {% if block.settings.total_first_year != blank %}
+              <p class="sleek-price-total">Total first year: <strong>€{{ block.settings.total_first_year }}</strong></p>
+            {% endif %}
 
             {% if block.settings.features_list != blank %}
               <ul class="sleek-pricing-features">
@@ -96,29 +94,91 @@
       {% endfor %}
     </div>
 
-    <!-- Trust Badges -->
-    {% if section.settings.show_trust_badges %}
-      <div class="sleek-trust-badges">
-        <p class="sleek-trust-text">{{ section.settings.trust_text }}</p>
-        <div class="sleek-trust-icons">
-          <div class="sleek-trust-item">
+    <!-- What's Included Section -->
+    {% if section.settings.show_whats_included %}
+      <div class="sleek-whats-included">
+        <h3 class="sleek-included-title">{{ section.settings.included_title }}</h3>
+        <div class="sleek-included-grid">
+          <div class="sleek-included-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/>
-              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
-            <span>SSL Sigurnost</span>
+            <span>SSL Security</span>
           </div>
-          <div class="sleek-trust-item">
+          <div class="sleek-included-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/>
+              <polyline points="7.5 4.21 12 6.81 16.5 4.21" stroke="currentColor" stroke-width="2"/>
+              <polyline points="7.5 19.79 7.5 14.6 3 12" stroke="currentColor" stroke-width="2"/>
+              <polyline points="21 12 16.5 14.6 16.5 19.79" stroke="currentColor" stroke-width="2"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>Cloud Hosting</span>
+          </div>
+          <div class="sleek-included-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>24/7 Monitoring</span>
+          </div>
+          <div class="sleek-included-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Regular Updates</span>
+          </div>
+          <div class="sleek-included-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>Priority Support</span>
+          </div>
+          <div class="sleek-included-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
+              <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/>
             </svg>
             <span>GDPR Compliant</span>
           </div>
-          <div class="sleek-trust-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke="currentColor" stroke-width="2"/>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Trust Badges -->
+    {% if section.settings.show_trust_badges %}
+      <div class="sleek-trust-section">
+        <p class="sleek-trust-text">{{ section.settings.trust_text }}</p>
+        <div class="sleek-trust-badges">
+          <div class="sleek-trust-badge">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/>
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
-            <span>Sigurna Naplata</span>
+            <div>
+              <div class="sleek-trust-title">Secure Payments</div>
+              <div class="sleek-trust-subtitle">256-bit SSL encryption</div>
+            </div>
+          </div>
+          <div class="sleek-trust-badge">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <div class="sleek-trust-title">Money-Back Guarantee</div>
+              <div class="sleek-trust-subtitle">30-day refund policy</div>
+            </div>
+          </div>
+          <div class="sleek-trust-badge">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <div class="sleek-trust-title">Quick Setup</div>
+              <div class="sleek-trust-subtitle">Live in 7-14 days</div>
+            </div>
           </div>
         </div>
       </div>
@@ -133,7 +193,6 @@
   position: relative;
 }
 
-/* Header */
 .sleek-pricing-header {
   text-align: center;
   max-width: 700px;
@@ -170,105 +229,22 @@
   font-size: 18px;
   line-height: 1.6;
   color: var(--sleek-gray-600);
-  margin: 0 0 32px;
+  margin: 0;
 }
 
-/* Billing Toggle */
-.sleek-billing-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  padding: 8px 16px;
-  background: var(--glass-bg-light);
-  backdrop-filter: var(--blur-light);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-}
-
-.sleek-billing-label {
-  font-size: 15px;
-  font-weight: var(--font-weight-medium);
-  color: var(--sleek-gray-700);
-}
-
-.sleek-billing-discount {
-  display: inline-block;
-  padding: 2px 8px;
-  background: var(--sleek-success);
-  color: white;
-  font-size: 12px;
-  font-weight: var(--font-weight-semibold);
-  border-radius: var(--radius-sm);
-  margin-left: 4px;
-}
-
-.sleek-toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 48px;
-  height: 28px;
-  cursor: pointer;
-}
-
-.sleek-toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.sleek-toggle-slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--sleek-gray-300);
-  border-radius: var(--radius-full);
-  transition: all var(--transition-base);
-}
-
-.sleek-toggle-slider::before {
-  content: '';
-  position: absolute;
-  height: 22px;
-  width: 22px;
-  left: 3px;
-  bottom: 3px;
-  background: white;
-  border-radius: 50%;
-  transition: all var(--transition-base);
-  box-shadow: var(--shadow-sm);
-}
-
-.sleek-toggle-switch input:checked + .sleek-toggle-slider {
-  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
-}
-
-.sleek-toggle-switch input:checked + .sleek-toggle-slider::before {
-  transform: translateX(20px);
-}
-
-/* Pricing Grid */
 .sleek-pricing-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
 @media (min-width: 750px) {
-  .sleek-pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 990px) {
   .sleek-pricing-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Pricing Card */
 .sleek-pricing-card {
   padding: 40px 32px;
   display: flex;
@@ -314,10 +290,9 @@
   height: 14px;
 }
 
-/* Plan Header */
 .sleek-pricing-plan-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .sleek-plan-icon {
@@ -349,30 +324,46 @@
   margin: 0;
 }
 
-/* Pricing */
-.sleek-pricing-price {
+.sleek-pricing-breakdown {
   text-align: center;
   padding: 24px 0;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  border-top: 1px solid var(--sleek-gray-200);
   border-bottom: 1px solid var(--sleek-gray-200);
 }
 
-.sleek-price-wrapper {
+.sleek-price-item {
+  margin-bottom: 16px;
+}
+
+.sleek-price-item:last-child {
+  margin-bottom: 0;
+}
+
+.sleek-price-label {
+  display: block;
+  font-size: 13px;
+  color: var(--sleek-gray-600);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sleek-price-amount-wrapper {
   display: flex;
   align-items: baseline;
   justify-content: center;
   gap: 4px;
-  margin-bottom: 8px;
 }
 
 .sleek-price-currency {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: var(--font-weight-semibold);
-  color: var(--sleek-gray-600);
+  color: var(--sleek-gray-700);
 }
 
 .sleek-price-amount {
-  font-size: 56px;
+  font-size: 42px;
   font-weight: var(--font-weight-heavy);
   line-height: 1;
   background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
@@ -380,18 +371,31 @@
   -webkit-text-fill-color: transparent;
 }
 
+.sleek-price-once,
 .sleek-price-period {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--sleek-gray-600);
 }
 
-.sleek-price-yearly {
-  font-size: 13px;
-  color: var(--sleek-gray-500);
-  margin: 0;
+.sleek-price-divider {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--sleek-gray-400);
+  margin: 12px 0;
 }
 
-/* Features List */
+.sleek-price-total {
+  text-align: center;
+  font-size: 14px;
+  color: var(--sleek-gray-600);
+  margin: 0 0 24px;
+}
+
+.sleek-price-total strong {
+  color: var(--sleek-dark);
+  font-weight: var(--font-weight-bold);
+}
+
 .sleek-pricing-features {
   list-style: none;
   padding: 0;
@@ -416,7 +420,6 @@
   margin-top: 2px;
 }
 
-/* Button */
 .sleek-pricing-button {
   width: 100%;
   display: flex;
@@ -440,8 +443,61 @@
   margin: 0;
 }
 
-/* Trust Badges */
-.sleek-trust-badges {
+.sleek-whats-included {
+  text-align: center;
+  padding: 60px 0;
+  border-top: 1px solid var(--sleek-gray-200);
+}
+
+.sleek-included-title {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 40px;
+}
+
+.sleek-included-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 750px) {
+  .sleek-included-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sleek-included-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.sleek-included-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.sleek-included-item svg {
+  color: var(--sleek-primary);
+}
+
+.sleek-included-item span {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--sleek-gray-700);
+}
+
+.sleek-trust-section {
   text-align: center;
   padding-top: 60px;
   border-top: 1px solid var(--sleek-gray-200);
@@ -450,29 +506,52 @@
 .sleek-trust-text {
   font-size: 14px;
   color: var(--sleek-gray-600);
-  margin: 0 0 24px;
+  margin: 0 0 32px;
 }
 
-.sleek-trust-icons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 32px;
+.sleek-trust-badges {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.sleek-trust-item {
+@media (min-width: 750px) {
+  .sleek-trust-badges {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sleek-trust-badge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--sleek-gray-700);
+  gap: 16px;
+  padding: 24px;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  text-align: left;
 }
 
-.sleek-trust-item svg {
+.sleek-trust-badge svg {
   color: var(--sleek-success);
+  flex-shrink: 0;
 }
 
-/* Animations */
+.sleek-trust-title {
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--sleek-dark);
+  margin-bottom: 4px;
+}
+
+.sleek-trust-subtitle {
+  font-size: 13px;
+  color: var(--sleek-gray-600);
+}
+
 .sleek-pricing-card {
   animation: fadeInUp 0.6s ease-out backwards;
 }
@@ -482,32 +561,6 @@
 .sleek-pricing-card:nth-child(3) { animation-delay: 0.3s; }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const toggle = document.getElementById('billingToggle');
-  if (!toggle) return;
-
-  toggle.addEventListener('change', function() {
-    const isYearly = this.checked;
-    const prices = document.querySelectorAll('.sleek-price-amount');
-    
-    prices.forEach(price => {
-      const monthly = price.getAttribute('data-monthly');
-      const yearly = price.getAttribute('data-yearly');
-      
-      if (yearly) {
-        price.textContent = isYearly ? yearly : monthly;
-      }
-    });
-
-    const periods = document.querySelectorAll('.sleek-price-period');
-    periods.forEach(period => {
-      period.textContent = isYearly ? '/godišnje' : '/mesec';
-    });
-  });
-});
-</script>
-
 {% schema %}
 {
   "name": "Sleek Pricing",
@@ -516,25 +569,35 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "badge_text",
       "label": "Badge Text",
-      "default": "Transparentne cene"
+      "default": "Transparent Pricing"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Izaberite Paket za Vaše Potrebe"
+      "default": "Choose Your Perfect Plan"
     },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Bez skrivenih troškova. Otkažite bilo kada. Sve funkcionalnosti u svakom paketu."
+      "default": "One-time setup fee + monthly subscription. No hidden costs. Cancel anytime."
+    },
+    {
+      "type": "header",
+      "content": "What's Included Section"
     },
     {
       "type": "checkbox",
-      "id": "show_billing_toggle",
-      "label": "Show Billing Toggle",
+      "id": "show_whats_included",
+      "label": "Show What's Included",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "included_title",
+      "label": "Included Section Title",
+      "default": "Everything Included in All Plans"
     },
     {
       "type": "header",
@@ -550,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "trust_text",
       "label": "Trust Text",
-      "default": "Sigurno i pouzdano"
+      "default": "Safe and secure"
     }
   ],
   "blocks": [
@@ -565,7 +628,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "default": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/><circle cx='12' cy='7' r='4'/></svg>"
         },
         {
-          "type": "color",
+          "type": "text",
           "id": "icon_color",
           "label": "Icon Color",
           "default": "linear-gradient(135deg, #007AFF, #5856D6)"
@@ -586,31 +649,37 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "textarea",
           "id": "plan_description",
           "label": "Plan Description",
-          "default": "Za mala preduzeća"
+          "default": "For small businesses"
+        },
+        {
+          "type": "text",
+          "id": "setup_price",
+          "label": "Setup Price (one-time)",
+          "default": "999"
         },
         {
           "type": "text",
           "id": "monthly_price",
           "label": "Monthly Price",
-          "default": "29"
+          "default": "99"
         },
         {
           "type": "text",
-          "id": "yearly_price",
-          "label": "Yearly Price (optional)",
-          "default": "290"
+          "id": "total_first_year",
+          "label": "Total First Year (optional)",
+          "default": "2,187"
         },
         {
           "type": "textarea",
           "id": "features_list",
           "label": "Features List (separate with |)",
-          "default": "Do 100 termina mesečno|Osnovna kalendar integracija|Email notifikacije|5 korisnika"
+          "default": "Custom booking website|Calendar integration|Email notifications|Mobile responsive|30 days support"
         },
         {
           "type": "text",
           "id": "button_text",
           "label": "Button Text",
-          "default": "Započni"
+          "default": "Get Started"
         },
         {
           "type": "url",
@@ -621,7 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "text",
           "id": "note",
           "label": "Note (optional)",
-          "default": "7 dana probni period"
+          "default": "Perfect for salons & small studios"
         }
       ]
     }
@@ -634,11 +703,12 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "pricing_plan",
           "settings": {
             "plan_name": "Starter",
-            "plan_description": "Za mala preduzeća",
-            "monthly_price": "29",
-            "yearly_price": "290",
-            "features_list": "Do 100 termina mesečno|Email notifikacije|Kalendar sync|5 korisnika|Email podrška",
-            "note": "7 dana besplatno"
+            "plan_description": "Perfect for small businesses",
+            "setup_price": "999",
+            "monthly_price": "99",
+            "total_first_year": "2,187",
+            "features_list": "Custom booking website|Basic calendar sync|Email notifications|Mobile app|30 days support|SSL security",
+            "note": "Ideal for salons & studios"
           }
         },
         {
@@ -647,11 +717,12 @@ document.addEventListener('DOMContentLoaded', function() {
             "icon_color": "linear-gradient(135deg, #5856D6, #8E44AD)",
             "is_popular": true,
             "plan_name": "Professional",
-            "plan_description": "Za rastuća preduzeća",
-            "monthly_price": "79",
-            "yearly_price": "790",
-            "features_list": "Neograničeni termini|SMS + Email notifikacije|AI asistent|20 korisnika|Priority podrška|Napredna analitika",
-            "note": "14 dana besplatno"
+            "plan_description": "For growing businesses",
+            "setup_price": "1,999",
+            "monthly_price": "249",
+            "total_first_year": "4,987",
+            "features_list": "Everything in Starter|AI assistant integration|SMS notifications|Advanced analytics|Priority support|Custom branding|90 days support",
+            "note": "Most popular choice"
           }
         },
         {
@@ -660,12 +731,13 @@ document.addEventListener('DOMContentLoaded', function() {
             "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/></svg>",
             "icon_color": "linear-gradient(135deg, #FF9500, #FFB800)",
             "plan_name": "Enterprise",
-            "plan_description": "Za velike organizacije",
-            "monthly_price": "199",
-            "yearly_price": "1990",
-            "features_list": "Sve iz Professional|Neograničeni korisnici|Dedicirani account manager|Custom integracije|SLA garantija|White label",
-            "button_text": "Kontaktirajte nas",
-            "note": "Personalizovane cene"
+            "plan_description": "For large organizations",
+            "setup_price": "4,999",
+            "monthly_price": "499",
+            "total_first_year": "10,987",
+            "features_list": "Everything in Professional|White label solution|Custom integrations|Dedicated account manager|Multi-location support|1 year support|Training included",
+            "button_text": "Contact Sales",
+            "note": "Custom solutions available"
           }
         }
       ]
