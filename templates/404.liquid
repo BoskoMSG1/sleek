@@ -1,0 +1,255 @@
+<div class="sleek-404-page">
+  <div class="sleek-container-narrow">
+    <div class="sleek-404-content">
+      
+      <!-- Animated 404 -->
+      <div class="sleek-404-animation">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="80" stroke="url(#gradient404)" stroke-width="4" stroke-dasharray="8 8">
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 100 100"
+              to="360 100 100"
+              dur="20s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <text x="100" y="120" text-anchor="middle" fill="url(#gradient404)" font-size="64" font-weight="bold">404</text>
+          <defs>
+            <linearGradient id="gradient404" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#007AFF;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#5856D6;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h1 class="sleek-404-title">Page Not Found</h1>
+      <p class="sleek-404-text">
+        Oops! The page you're looking for doesn't exist. It might have been moved or deleted.
+      </p>
+
+      <!-- Search -->
+      <div class="sleek-404-search">
+        <form action="/search" method="get" class="sleek-search-form">
+          <div class="sleek-search-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <input 
+              type="text" 
+              name="q" 
+              placeholder="Search our site..." 
+              class="sleek-search-input"
+              autocomplete="off"
+            >
+            <button type="submit" class="sleek-search-btn">Search</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="sleek-404-links">
+        <h3 class="sleek-404-links-title">Maybe try these?</h3>
+        <div class="sleek-404-links-grid">
+          <a href="/" class="sleek-404-link-card sleek-glass-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
+              <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>Home</span>
+          </a>
+          
+          {% if linklists.main-menu.links.size > 0 %}
+            {% for link in linklists.main-menu.links limit: 3 %}
+              <a href="{{ link.url }}" class="sleek-404-link-card sleek-glass-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>{{ link.title }}</span>
+              </a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Back Button -->
+      <div class="sleek-404-actions">
+        <a href="javascript:history.back()" class="sleek-btn sleek-btn-glass">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Go Back
+        </a>
+        <a href="/" class="sleek-btn sleek-btn-primary">
+          Back to Home
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.sleek-404-page {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.sleek-404-content {
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.sleek-404-animation {
+  margin: 0 auto 40px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.sleek-404-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sleek-404-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--sleek-gray-600);
+  margin: 0 0 48px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Search */
+.sleek-404-search {
+  max-width: 500px;
+  margin: 0 auto 60px;
+}
+
+.sleek-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-medium);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+}
+
+.sleek-search-wrapper:focus-within {
+  border-color: var(--sleek-primary);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+}
+
+.sleek-search-wrapper svg {
+  color: var(--sleek-gray-500);
+  flex-shrink: 0;
+}
+
+.sleek-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--sleek-dark);
+  outline: none;
+}
+
+.sleek-search-input::placeholder {
+  color: var(--sleek-gray-500);
+}
+
+.sleek-search-btn {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.sleek-search-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Quick Links */
+.sleek-404-links {
+  margin-bottom: 48px;
+}
+
+.sleek-404-links-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 24px;
+  color: var(--sleek-dark);
+}
+
+.sleek-404-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sleek-404-link-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  text-decoration: none;
+  color: var(--sleek-dark);
+  transition: all var(--transition-base);
+}
+
+.sleek-404-link-card:hover {
+  transform: translateY(-4px);
+  color: var(--sleek-primary);
+}
+
+.sleek-404-link-card svg {
+  color: var(--sleek-primary);
+}
+
+.sleek-404-link-card span {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Actions */
+.sleek-404-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .sleek-404-actions {
+    flex-direction: column;
+  }
+  
+  .sleek-404-actions .sleek-btn {
+    width: 100%;
+  }
+}
+</style>
