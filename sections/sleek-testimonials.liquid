@@ -1,0 +1,646 @@
+{{ 'section-sleek-testimonials.css' | asset_url | stylesheet_tag }}
+
+<div class="sleek-testimonials-section sleek-section">
+  <div class="sleek-container">
+    
+    <!-- Section Header -->
+    <div class="sleek-testimonials-header">
+      <div class="sleek-testimonials-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+        </svg>
+        <span>{{ section.settings.badge_text }}</span>
+      </div>
+      <h2 class="sleek-testimonials-title">{{ section.settings.title }}</h2>
+      <p class="sleek-testimonials-description">{{ section.settings.description }}</p>
+    </div>
+
+    <!-- Stats Bar -->
+    {% if section.settings.show_stats %}
+      <div class="sleek-testimonials-stats">
+        <div class="sleek-stat-item sleek-glass">
+          <div class="sleek-stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="sleek-stat-content">
+            <div class="sleek-stat-number">{{ section.settings.stat_rating }}</div>
+            <div class="sleek-stat-label">Prosečna ocena</div>
+          </div>
+        </div>
+        
+        <div class="sleek-stat-item sleek-glass">
+          <div class="sleek-stat-icon" style="background: linear-gradient(135deg, #34C759, #30D158);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="sleek-stat-content">
+            <div class="sleek-stat-number">{{ section.settings.stat_users }}</div>
+            <div class="sleek-stat-label">Zadovoljnih korisnika</div>
+          </div>
+        </div>
+        
+        <div class="sleek-stat-item sleek-glass">
+          <div class="sleek-stat-icon" style="background: linear-gradient(135deg, #FF9500, #FFB800);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sleek-stat-content">
+            <div class="sleek-stat-number">{{ section.settings.stat_satisfaction }}</div>
+            <div class="sleek-stat-label">Zadovoljstvo</div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Testimonials Grid -->
+    <div class="sleek-testimonials-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'testimonial' %}
+          <div class="sleek-testimonial-card sleek-glass-card" {{ block.shopify_attributes }}>
+            
+            <!-- Rating Stars -->
+            <div class="sleek-testimonial-rating">
+              {% assign rating = block.settings.rating | plus: 0 %}
+              {% for i in (1..5) %}
+                {% if i <= rating %}
+                  <svg class="sleek-star sleek-star-filled" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                {% else %}
+                  <svg class="sleek-star" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <!-- Quote -->
+            <div class="sleek-testimonial-quote">
+              <svg class="sleek-quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="currentColor" opacity="0.1"/>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" fill="currentColor" opacity="0.1"/>
+              </svg>
+              <p class="sleek-testimonial-text">{{ block.settings.testimonial_text }}</p>
+            </div>
+
+            <!-- Author Info -->
+            <div class="sleek-testimonial-author">
+              <div class="sleek-author-avatar">
+                {% if block.settings.avatar_image != blank %}
+                  <img src="{{ block.settings.avatar_image | image_url: width: 96 }}" alt="{{ block.settings.author_name }}" loading="lazy">
+                {% else %}
+                  <div class="sleek-avatar-placeholder">
+                    {{ block.settings.author_name | slice: 0 }}
+                  </div>
+                {% endif %}
+                {% if block.settings.show_verified %}
+                  <div class="sleek-verified-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="sleek-author-info">
+                <h4 class="sleek-author-name">{{ block.settings.author_name }}</h4>
+                <p class="sleek-author-role">{{ block.settings.author_role }}</p>
+                {% if block.settings.company_name != blank %}
+                  <p class="sleek-author-company">{{ block.settings.company_name }}</p>
+                {% endif %}
+              </div>
+            </div>
+
+            <!-- Optional: Platform Badge -->
+            {% if block.settings.platform != blank %}
+              <div class="sleek-platform-badge">
+                {{ block.settings.platform }}
+              </div>
+            {% endif %}
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- CTA -->
+    {% if section.settings.show_cta %}
+      <div class="sleek-testimonials-cta">
+        <h3 class="sleek-cta-title">{{ section.settings.cta_title }}</h3>
+        <a href="{{ section.settings.cta_link }}" class="sleek-btn sleek-btn-primary">
+          {{ section.settings.cta_button_text }}
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<style>
+.sleek-testimonials-section {
+  padding: 100px 0;
+  position: relative;
+}
+
+/* Header */
+.sleek-testimonials-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.sleek-testimonials-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.1), rgba(255, 184, 0, 0.1));
+  border: 1px solid rgba(255, 149, 0, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--sleek-warning);
+  margin-bottom: 24px;
+}
+
+.sleek-testimonials-badge svg {
+  color: var(--sleek-warning);
+}
+
+.sleek-testimonials-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: var(--font-weight-heavy);
+  line-height: 1.2;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+}
+
+.sleek-testimonials-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--sleek-gray-600);
+  margin: 0;
+}
+
+/* Stats Bar */
+.sleek-testimonials-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 750px) {
+  .sleek-testimonials-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sleek-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.sleek-stat-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.sleek-stat-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--sleek-warning), #FFB800);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.sleek-stat-number {
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+
+.sleek-stat-label {
+  font-size: 14px;
+  color: var(--sleek-gray-600);
+}
+
+/* Testimonials Grid */
+.sleek-testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 750px) {
+  .sleek-testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (min-width: 990px) {
+  .sleek-testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Testimonial Card */
+.sleek-testimonial-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.sleek-testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
+}
+
+/* Rating */
+.sleek-testimonial-rating {
+  display: flex;
+  gap: 4px;
+}
+
+.sleek-star {
+  color: var(--sleek-gray-300);
+}
+
+.sleek-star-filled {
+  color: var(--sleek-warning);
+}
+
+/* Quote */
+.sleek-testimonial-quote {
+  position: relative;
+  flex-grow: 1;
+}
+
+.sleek-quote-icon {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  color: var(--sleek-primary);
+  opacity: 0.15;
+}
+
+.sleek-testimonial-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--sleek-gray-700);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Author */
+.sleek-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--sleek-gray-200);
+}
+
+.sleek-author-avatar {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.sleek-author-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sleek-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+}
+
+.sleek-verified-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  background: var(--sleek-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.sleek-verified-badge svg {
+  width: 12px;
+  height: 12px;
+  color: white;
+}
+
+.sleek-author-name {
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 4px;
+  color: var(--sleek-dark);
+}
+
+.sleek-author-role {
+  font-size: 14px;
+  color: var(--sleek-gray-600);
+  margin: 0;
+}
+
+.sleek-author-company {
+  font-size: 13px;
+  color: var(--sleek-gray-500);
+  margin: 4px 0 0;
+}
+
+/* Platform Badge */
+.sleek-platform-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 12px;
+  background: var(--sleek-gray-100);
+  border: 1px solid var(--sleek-gray-200);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  color: var(--sleek-gray-600);
+}
+
+/* CTA */
+.sleek-testimonials-cta {
+  text-align: center;
+  padding: 48px;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+}
+
+.sleek-cta-title {
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 24px;
+}
+
+/* Animations */
+.sleek-testimonial-card {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.sleek-testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+.sleek-testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+.sleek-testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+.sleek-testimonial-card:nth-child(4) { animation-delay: 0.4s; }
+.sleek-testimonial-card:nth-child(5) { animation-delay: 0.5s; }
+.sleek-testimonial-card:nth-child(6) { animation-delay: 0.6s; }
+</style>
+
+{% schema %}
+{
+  "name": "Sleek Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Šta kažu naši korisnici"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Pridružite se Hiljadama Zadovoljnih Korisnika"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Realne priče od realnih korisnika koji su transformisali svoj način rada sa Sleek sistemom."
+    },
+    {
+      "type": "header",
+      "content": "Stats Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show Stats",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stat_rating",
+      "label": "Average Rating",
+      "default": "4.9/5"
+    },
+    {
+      "type": "text",
+      "id": "stat_users",
+      "label": "Number of Users",
+      "default": "10,000+"
+    },
+    {
+      "type": "text",
+      "id": "stat_satisfaction",
+      "label": "Satisfaction Rate",
+      "default": "98%"
+    },
+    {
+      "type": "header",
+      "content": "CTA Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Spremni da postanete sledeća success priča?"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text",
+      "default": "Započni Besplatno"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating (1-5)",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_text",
+          "label": "Testimonial Text",
+          "default": "Sleek je potpuno promenio način na koji upravljam svojim salonom. Klijenti obožavaju koliko je lako zakazati termine!"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar_image",
+          "label": "Author Avatar"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Ana Jovanović"
+        },
+        {
+          "type": "text",
+          "id": "author_role",
+          "label": "Author Role",
+          "default": "Vlasnica salona"
+        },
+        {
+          "type": "text",
+          "id": "company_name",
+          "label": "Company Name (optional)",
+          "default": "Beauty Studio Ana"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_verified",
+          "label": "Show Verified Badge",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "platform",
+          "label": "Platform Badge (optional)",
+          "default": "Google Reviews"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sleek Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Sleek je revolucionisao moj salon! Rezervacije su porasle za 40% jer klijenti mogu zakazati 24/7. AI asistent je neverovatno koristan!",
+            "author_name": "Marija Petrović",
+            "author_role": "Vlasnica salona",
+            "company_name": "Salon Elegance",
+            "platform": "Google"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Konačno sistem koji zapravo radi! Automatske notifikacije su smanjile no-show za 80%. Najviše volim kalendar sinhronizaciju.",
+            "author_name": "Nikola Jovanović",
+            "author_role": "Stomatolog",
+            "company_name": "Dental Clinic Dr. Jovanović",
+            "platform": "Trustpilot"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Kao freelance konsultant, Sleek mi je omogućio da izgledam profesionalno. Klijenti su impresionirani sistemom zakazivanja!",
+            "author_name": "Stefan Marković",
+            "author_role": "Business Consultant",
+            "company_name": "SM Consulting"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Prešli smo sa Excel tabela na Sleek i nikad nismo bili efikasniji. Tim obožava koliko je jednostavan za korišćenje!",
+            "author_name": "Jelena Nikolić",
+            "author_role": "Menadžer",
+            "company_name": "Fitness Studio ProBody",
+            "platform": "Capterra"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Najbolja investicija za moj restoran! Gosti mogu rezervisati stolove online, a mi imamo potpunu kontrolu nad kapacitetom.",
+            "author_name": "Milan Đorđević",
+            "author_role": "Vlasnik restorana",
+            "company_name": "Restoran Tri Lista"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Sleek analitika mi je pomogla da optimizujem radno vreme i povećam prihode za 35%. Preporuka svima!",
+            "author_name": "Ivana Pavlović",
+            "author_role": "Kozmetičar",
+            "company_name": "Beauty Lab",
+            "platform": "Google"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
