@@ -1,0 +1,449 @@
+{
+  "sections": {
+    "sleek_hero": {
+      "type": "sleek-booking-hero",
+      "settings": {
+        "badge_text": "Premium Booking System",
+        "title": "Booking Website<br>Your Clients<br><span class='sleek-gradient-text'>Love</span>",
+        "description": "Professional booking system with AI integration, automatic notifications and sync with all calendars. Increase revenue and reduce no-shows by 80%.",
+        "feature_1": "Automatic sync with Apple, Google and Outlook calendars",
+        "feature_2": "AI assistant for instant customer support 24/7",
+        "feature_3": "SMS and email notifications in real-time",
+        "button_primary_text": "Start Free Trial",
+        "button_primary_link": "",
+        "button_secondary_text": "Watch Demo",
+        "button_secondary_link": "",
+        "stat_1_number": "10k+",
+        "stat_1_label": "Active Users",
+        "stat_2_number": "99.9%",
+        "stat_2_label": "Uptime",
+        "stat_3_number": "24/7",
+        "stat_3_label": "Support"
+      }
+    },
+    "sleek_features": {
+      "type": "sleek-features",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='3' y='4' width='18' height='18' rx='2'/><path d='M16 2v4M8 2v4M3 10h18'/></svg>",
+            "icon_color": "linear-gradient(135deg, #007AFF, #5856D6)",
+            "show_badge": false,
+            "title": "Online Booking 24/7",
+            "description": "Enable customers to book appointments anytime, anywhere. Automatic confirmation and calendar sync.",
+            "features_list": "Instant appointment confirmation|SMS and email notifications|Automatic reminders|Calendar synchronization",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M12 2L2 7L12 12L22 7L12 2Z'/><path d='M2 17L12 22L22 17'/><path d='M2 12L12 17L22 12'/></svg>",
+            "icon_color": "linear-gradient(135deg, #FF9500, #FFB800)",
+            "show_badge": true,
+            "badge_text": "AI",
+            "title": "AI Assistant",
+            "description": "Intelligent chatbot that automatically answers questions, books appointments and provides 24/7 support.",
+            "features_list": "Automatic responses|Multi-language support|Learning from data|Personalized recommendations",
+            "button_text": "See demo",
+            "button_link": ""
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z'/></svg>",
+            "icon_color": "linear-gradient(135deg, #34C759, #30D158)",
+            "show_badge": false,
+            "title": "Automatic Messages",
+            "description": "SMS and email notifications sent automatically for confirmations, reminders and follow-ups.",
+            "features_list": "Booking confirmations|24h reminders|Follow-up messages|Birthday greetings",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/></svg>",
+            "icon_color": "linear-gradient(135deg, #5856D6, #8E44AD)",
+            "show_badge": false,
+            "title": "CRM System",
+            "description": "Manage all customer data, appointment history and preferences in one place.",
+            "features_list": "Customer database|Appointment history|Custom tags|Notes and files",
+            "button_text": "View",
+            "button_link": ""
+          }
+        },
+        "feature_5": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><polyline points='22 12 18 12 15 21 9 3 6 12 2 12'/></svg>",
+            "icon_color": "linear-gradient(135deg, #FF3B30, #FF6259)",
+            "show_badge": false,
+            "title": "Advanced Analytics",
+            "description": "Detailed reports about your business, performance and trends for better decisions.",
+            "features_list": "Real-time dashboard|Charts and reports|Data export|Trend forecasting",
+            "button_text": "See analytics",
+            "button_link": ""
+          }
+        },
+        "feature_6": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='5' y='2' width='14' height='20' rx='2' ry='2'/><line x1='12' y1='18' x2='12.01' y2='18'/></svg>",
+            "icon_color": "linear-gradient(135deg, #00C7BE, #4ECDC4)",
+            "show_badge": false,
+            "title": "Mobile App",
+            "description": "Access your schedule and customers from any device, iOS and Android.",
+            "features_list": "iOS and Android app|Push notifications|Offline mode|Face ID / Touch ID",
+            "button_text": "Download",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4",
+        "feature_5",
+        "feature_6"
+      ],
+      "settings": {
+        "badge_text": "Everything You Need",
+        "title": "Complete Appointment Management System",
+        "description": "All the features you need to professionally manage your booking system and keep customers happy.",
+        "show_cta": true,
+        "cta_title": "Ready to transform your workflow?",
+        "cta_text": "Join thousands of satisfied users and digitize your business today.",
+        "cta_primary_text": "Start Free Trial",
+        "cta_primary_link": "",
+        "cta_secondary_text": "Talk to Us",
+        "cta_secondary_link": ""
+      }
+    },
+    "sleek_ai_assistant": {
+      "type": "sleek-ai-assistant",
+      "blocks": {
+        "ai_feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='3' y='4' width='18' height='18' rx='2'/><path d='M16 2v4M8 2v4M3 10h18'/></svg>",
+            "icon_color": "linear-gradient(135deg, #007AFF, #5856D6)",
+            "title": "Calendar Sync",
+            "description": "Automatic sync with Apple Calendar, Google Calendar, Outlook and all others."
+          }
+        },
+        "ai_feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z'/></svg>",
+            "icon_color": "linear-gradient(135deg, #34C759, #30D158)",
+            "title": "Automatic Messages",
+            "description": "SMS and email notifications sent automatically at the right time."
+          }
+        },
+        "ai_feature_3": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M12 2L2 7L12 12L22 7L12 2Z'/><path d='M2 17L12 22L22 17'/><path d='M2 12L12 17L22 12'/></svg>",
+            "icon_color": "linear-gradient(135deg, #FF9500, #FFB800)",
+            "title": "Intelligent Insights",
+            "description": "AI analyzes your schedule and provides recommendations for optimization."
+          }
+        },
+        "ai_feature_4": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0'/></svg>",
+            "icon_color": "linear-gradient(135deg, #FF3B30, #FF6259)",
+            "title": "Real-time Notifications",
+            "description": "Instant alerts about new appointments, changes and cancellations."
+          }
+        }
+      },
+      "block_order": [
+        "ai_feature_1",
+        "ai_feature_2",
+        "ai_feature_3",
+        "ai_feature_4"
+      ],
+      "settings": {
+        "badge_text": "AI Powered",
+        "title": "AI Assistant Working for You 24/7",
+        "description": "Automatic customer support, intelligent appointment scheduling and sync with all calendars."
+      }
+    },
+    "sleek_pricing": {
+      "type": "sleek-pricing",
+      "blocks": {
+        "pricing_starter": {
+          "type": "pricing_plan",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/><circle cx='12' cy='7' r='4'/></svg>",
+            "icon_color": "linear-gradient(135deg, #007AFF, #5856D6)",
+            "is_popular": false,
+            "plan_name": "Starter",
+            "plan_description": "Perfect for small businesses",
+            "setup_price": "999",
+            "monthly_price": "99",
+            "total_first_year": "2,187",
+            "features_list": "Custom booking website|Basic calendar sync|Email notifications|Mobile responsive|30 days support|SSL security",
+            "button_text": "Get Started",
+            "button_link": "",
+            "note": "Ideal for salons & studios"
+          }
+        },
+        "pricing_professional": {
+          "type": "pricing_plan",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/></svg>",
+            "icon_color": "linear-gradient(135deg, #5856D6, #8E44AD)",
+            "is_popular": true,
+            "plan_name": "Professional",
+            "plan_description": "For growing businesses",
+            "setup_price": "1,999",
+            "monthly_price": "249",
+            "total_first_year": "4,987",
+            "features_list": "Everything in Starter|AI assistant integration|SMS notifications|Advanced analytics|Priority support|Custom branding|90 days support",
+            "button_text": "Get Started",
+            "button_link": "",
+            "note": "Most popular choice"
+          }
+        },
+        "pricing_enterprise": {
+          "type": "pricing_plan",
+          "settings": {
+            "icon_svg": "<svg width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/></svg>",
+            "icon_color": "linear-gradient(135deg, #FF9500, #FFB800)",
+            "is_popular": false,
+            "plan_name": "Enterprise",
+            "plan_description": "For large organizations",
+            "setup_price": "4,999",
+            "monthly_price": "499",
+            "total_first_year": "10,987",
+            "features_list": "Everything in Professional|White label solution|Custom integrations|Dedicated account manager|Multi-location support|1 year support|Training included",
+            "button_text": "Contact Sales",
+            "button_link": "",
+            "note": "Custom solutions available"
+          }
+        }
+      },
+      "block_order": [
+        "pricing_starter",
+        "pricing_professional",
+        "pricing_enterprise"
+      ],
+      "settings": {
+        "badge_text": "Transparent Pricing",
+        "title": "Choose Your Perfect Plan",
+        "description": "One-time setup fee + monthly subscription. No hidden costs. Cancel anytime.",
+        "show_whats_included": true,
+        "included_title": "Everything Included in All Plans",
+        "show_trust_badges": true,
+        "trust_text": "Safe and secure"
+      }
+    },
+    "sleek_testimonials": {
+      "type": "sleek-testimonials",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Sleek revolutionized my salon! Bookings increased 40% because clients can book 24/7. The AI assistant is incredibly helpful!",
+            "author_name": "Maria Garcia",
+            "author_role": "Salon Owner",
+            "company_name": "Salon Elegance",
+            "show_verified": true,
+            "platform": "Google"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Finally a system that actually works! Automatic notifications reduced no-shows by 80%. Love the calendar sync most.",
+            "author_name": "Dr. Michael Chen",
+            "author_role": "Dentist",
+            "company_name": "Chen Dental Clinic",
+            "show_verified": true,
+            "platform": "Trustpilot"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "As a freelance consultant, Sleek made me look professional. Clients are impressed with the booking system!",
+            "author_name": "James Wilson",
+            "author_role": "Business Consultant",
+            "company_name": "Wilson Consulting",
+            "show_verified": true,
+            "platform": ""
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "We switched from Excel to Sleek and never been more efficient. The team loves how simple it is!",
+            "author_name": "Lisa Thompson",
+            "author_role": "Manager",
+            "company_name": "FitLife Gym",
+            "show_verified": true,
+            "platform": "Capterra"
+          }
+        },
+        "testimonial_5": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Best investment for my restaurant! Guests can book tables online and we have full control over capacity.",
+            "author_name": "Antonio Rossi",
+            "author_role": "Restaurant Owner",
+            "company_name": "Bella Vista",
+            "show_verified": true,
+            "platform": ""
+          }
+        },
+        "testimonial_6": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "testimonial_text": "Sleek analytics helped me optimize my schedule and increase revenue by 35%. Highly recommend!",
+            "author_name": "Emma Davis",
+            "author_role": "Beautician",
+            "company_name": "Beauty Lab",
+            "show_verified": true,
+            "platform": "Google"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4",
+        "testimonial_5",
+        "testimonial_6"
+      ],
+      "settings": {
+        "badge_text": "Customer Stories",
+        "title": "Join Thousands of Happy Customers",
+        "description": "Real stories from real users who transformed their business with Sleek.",
+        "show_stats": true,
+        "stat_rating": "4.9/5",
+        "stat_users": "10,000+",
+        "stat_satisfaction": "98%",
+        "show_cta": true,
+        "cta_title": "Ready to become our next success story?",
+        "cta_button_text": "Start Free Trial",
+        "cta_link": ""
+      }
+    },
+    "sleek_faq": {
+      "type": "sleek-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does Sleek work with my existing calendar?",
+            "answer": "<p>Yes! Sleek automatically syncs with Apple Calendar, Google Calendar, Outlook and all popular calendars. All appointments are updated in real-time.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How many clients can I have?",
+            "answer": "<p>No limit on the number of clients! You can have unlimited clients in your database, even on the Starter plan. The limit only applies to the number of appointments per month.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does the AI assistant work?",
+            "answer": "<p>Our AI assistant automatically answers customer questions 24/7, helps them book appointments, sends reminders, and provides support in multiple languages. The AI learns from your data to provide personalized experiences.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I cancel at any time?",
+            "answer": "<p>Absolutely! No contracts or commitments. You can cancel your subscription anytime with one click. Your data remains accessible for 30 days after cancellation.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is the setup complicated?",
+            "answer": "<p>Not at all! Most users set up Sleek in less than 10 minutes. Follow our simple wizard that guides you step by step. We also offer free setup assistance for Enterprise users.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What types of notifications can I send?",
+            "answer": "<p>You can send SMS and email notifications for: appointment confirmations, reminders 24h before, post-appointment follow-ups, birthday messages, promotions and custom messages of your choice.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is my data secure?",
+            "answer": "<p>Absolutely! We use bank-level SSL encryption, comply with GDPR regulations, conduct regular security audits and backup data daily. Your data is in safe hands.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's the difference between plans?",
+            "answer": "<p>The main difference is in the setup fee, monthly cost, and included features. All plans have access to basic features. Professional adds AI assistant and advanced analytics, while Enterprise offers dedicated support and custom integrations.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "badge_text": "Frequently Asked Questions",
+        "title": "Got Questions? We Have Answers!",
+        "description": "Everything you need to know about Sleek booking system. Can't find the answer? Contact us!",
+        "show_contact_card": true,
+        "contact_title": "Still Have Questions?",
+        "contact_text": "Our team is available 24/7 to help you with anything you need.",
+        "show_email": true,
+        "email_address": "hello@sleekbooking.com",
+        "show_phone": true,
+        "phone_number": "+1 (555) 123-4567",
+        "show_chat": true,
+        "chat_link": "",
+        "contact_button_text": "Contact Us",
+        "contact_button_link": "",
+        "show_bottom_cta": true,
+        "bottom_cta_title": "Ready to Transform Your Business?",
+        "bottom_cta_text": "Start free today. No credit card required. Cancel anytime.",
+        "bottom_cta_button": "Start Free Trial",
+        "bottom_cta_link": ""
+      }
+    }
+  },
+  "order": [
+    "sleek_hero",
+    "sleek_features",
+    "sleek_ai_assistant",
+    "sleek_pricing",
+    "sleek_testimonials",
+    "sleek_faq"
+  ]
+}
