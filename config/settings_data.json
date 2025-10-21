@@ -1,0 +1,89 @@
+{
+  "current": {
+    "color_primary": "#007AFF",
+    "color_secondary": "#5856D6",
+    "color_success": "#34C759",
+    "color_warning": "#FF9500",
+    "color_danger": "#FF3B30",
+    "color_text": "#1C1C1E",
+    "color_text_light": "#8E8E93",
+    "color_background": "#FFFFFF",
+    "color_background_secondary": "#F2F2F7",
+    "font_body_size": 16,
+    "heading_scale": 120,
+    "page_width": 1200,
+    "section_spacing": 100,
+    "border_radius": 12,
+    "button_style": "primary",
+    "button_border_radius": 24,
+    "button_shadow": true,
+    "enable_animations": true,
+    "enable_scroll_animations": true,
+    "animation_speed": "normal",
+    "social_facebook": "",
+    "social_instagram": "",
+    "social_twitter": "",
+    "social_linkedin": "",
+    "social_youtube": "",
+    "social_tiktok": "",
+    "contact_email": "hello@sleekbooking.com",
+    "contact_phone": "+1 (555) 123-4567",
+    "contact_address": "123 Business Street, City, State 12345",
+    "business_hours": "Mon-Fri: 9AM-6PM",
+    "custom_css": "",
+    "custom_js": "",
+    "header_code": "",
+    "footer_code": "",
+    "meta_description": "Professional booking system for modern businesses. Get started today.",
+    "meta_keywords": "",
+    "google_analytics_id": "",
+    "lazy_load_images": true,
+    "preload_fonts": true,
+    "minify_css": false,
+    "enable_dev_mode": false,
+    "enable_dark_mode": false,
+    "custom_theme_class": "",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "show_cta_button": true,
+          "cta_text": "Get Started",
+          "cta_link": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_description": "Professional booking system for modern businesses.",
+          "show_social": true,
+          "show_newsletter": true,
+          "newsletter_heading": "Stay Updated",
+          "newsletter_text": "Subscribe to get updates and exclusive offers.",
+          "copyright_text": "All rights reserved.",
+          "show_payment_icons": true
+        },
+        "blocks": {
+          "footer-menu-1": {
+            "type": "menu",
+            "settings": {
+              "heading": "Company",
+              "menu": "footer"
+            }
+          },
+          "footer-menu-2": {
+            "type": "menu",
+            "settings": {
+              "heading": "Support",
+              "menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "footer-menu-1",
+          "footer-menu-2"
+        ]
+      }
+    }
+  }
+}
