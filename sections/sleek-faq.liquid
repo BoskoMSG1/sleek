@@ -118,7 +118,6 @@
   position: relative;
 }
 
-/* Header */
 .sleek-faq-header {
   text-align: center;
   max-width: 700px;
@@ -158,7 +157,6 @@
   margin: 0;
 }
 
-/* Layout */
 .sleek-faq-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -172,7 +170,6 @@
   }
 }
 
-/* FAQ Accordion */
 .sleek-faq-accordion {
   display: flex;
   flex-direction: column;
@@ -193,7 +190,6 @@
   border-color: var(--sleek-primary);
 }
 
-/* Question Button */
 .sleek-faq-question {
   width: 100%;
   display: flex;
@@ -229,7 +225,6 @@
   transform: rotate(180deg);
 }
 
-/* Answer */
 .sleek-faq-answer {
   max-height: 0;
   overflow: hidden;
@@ -264,7 +259,6 @@
   margin-bottom: 8px;
 }
 
-/* Contact Card */
 .sleek-faq-contact {
   padding: 32px;
   position: sticky;
@@ -297,7 +291,6 @@
   line-height: 1.6;
 }
 
-/* Contact Methods */
 .sleek-contact-methods {
   display: flex;
   flex-direction: column;
@@ -329,7 +322,6 @@
   flex-shrink: 0;
 }
 
-/* Bottom CTA */
 .sleek-faq-bottom-cta {
   margin-top: 60px;
   padding: 48px;
@@ -360,7 +352,6 @@
   margin: 0;
 }
 
-/* Animations */
 .sleek-faq-item {
   animation: fadeInUp 0.6s ease-out backwards;
 }
@@ -378,18 +369,15 @@ function toggleFAQ(button) {
   const item = button.closest('.sleek-faq-item');
   const isActive = item.classList.contains('active');
   
-  // Close all other items
   document.querySelectorAll('.sleek-faq-item').forEach(faqItem => {
     if (faqItem !== item) {
       faqItem.classList.remove('active');
     }
   });
   
-  // Toggle current item
   item.classList.toggle('active', !isActive);
 }
 
-// Open first item by default
 document.addEventListener('DOMContentLoaded', function() {
   const firstItem = document.querySelector('.sleek-faq-item');
   if (firstItem) {
@@ -406,19 +394,19 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "badge_text",
       "label": "Badge Text",
-      "default": "Često Postavljena Pitanja"
+      "default": "Frequently Asked Questions"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Imate Pitanja? Imamo Odgovore!"
+      "default": "Got Questions? We Have Answers!"
     },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Sve što treba da znate o Sleek booking sistemu. Nije pronašli odgovor? Kontaktirajte nas!"
+      "default": "Everything you need to know about Sleek booking system. Can't find the answer? Contact us!"
     },
     {
       "type": "header",
@@ -434,13 +422,13 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "contact_title",
       "label": "Contact Card Title",
-      "default": "Još Uvek Imate Pitanja?"
+      "default": "Still Have Questions?"
     },
     {
       "type": "textarea",
       "id": "contact_text",
       "label": "Contact Card Text",
-      "default": "Naš tim je dostupan 24/7 da vam pomogne sa bilo čim što vam treba."
+      "default": "Our team is available 24/7 to help you with anything you need."
     },
     {
       "type": "checkbox",
@@ -464,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "phone_number",
       "label": "Phone Number",
-      "default": "+381 11 123 4567"
+      "default": "+1 (555) 123-4567"
     },
     {
       "type": "checkbox",
@@ -481,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "contact_button_text",
       "label": "Contact Button Text",
-      "default": "Kontaktirajte Nas"
+      "default": "Contact Us"
     },
     {
       "type": "url",
@@ -502,19 +490,19 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "bottom_cta_title",
       "label": "CTA Title",
-      "default": "Spremni da Transformišete Vaš Biznis?"
+      "default": "Ready to Transform Your Business?"
     },
     {
       "type": "textarea",
       "id": "bottom_cta_text",
       "label": "CTA Text",
-      "default": "Započnite besplatno danas. Bez kreditne kartice. Otkažite bilo kada."
+      "default": "Start free today. No credit card required. Cancel anytime."
     },
     {
       "type": "text",
       "id": "bottom_cta_button",
       "label": "CTA Button Text",
-      "default": "Započni Besplatno"
+      "default": "Start Free Trial"
     },
     {
       "type": "url",
@@ -531,13 +519,13 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "text",
           "id": "question",
           "label": "Question",
-          "default": "Kako funkcioniše Sleek booking sistem?"
+          "default": "How does the Sleek booking system work?"
         },
         {
           "type": "richtext",
           "id": "answer",
           "label": "Answer",
-          "default": "<p>Sleek je kompletan booking sistem koji omogućava vašim klijentima da zakažu termine online 24/7. Sistem automatski sinhronizuje termine sa vašim kalendarom, šalje notifikacije i upravlja svim aspektima zakazivanja.</p>"
+          "default": "<p>Sleek is a complete booking system that enables your clients to book appointments online 24/7. The system automatically syncs appointments with your calendar, sends notifications and manages all aspects of scheduling.</p>"
         }
       ]
     }
@@ -549,57 +537,57 @@ document.addEventListener('DOMContentLoaded', function() {
         {
           "type": "faq_item",
           "settings": {
-            "question": "Da li Sleek radi sa mojim postojećim kalendarom?",
-            "answer": "<p>Da! Sleek se automatski sinhronizuje sa Apple Calendar, Google Calendar, Outlook i svim popularnim kalendarima. Svi termini se automatski ažuriraju u realnom vremenu.</p>"
+            "question": "Does Sleek work with my existing calendar?",
+            "answer": "<p>Yes! Sleek automatically syncs with Apple Calendar, Google Calendar, Outlook and all popular calendars. All appointments are updated in real-time.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Koliko klijenta mogu da imam?",
-            "answer": "<p>Nema limita za broj klijenata! Možete imati neograničen broj klijenata u bazi podataka, čak i na Starter paketu. Limit se odnosi samo na broj termina mesečno.</p>"
+            "question": "How many clients can I have?",
+            "answer": "<p>No limit on the number of clients! You can have unlimited clients in your database, even on the Starter plan. The limit only applies to the number of appointments per month.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Kako funkcioniše AI asistent?",
-            "answer": "<p>Naš AI asistent automatski odgovara na pitanja klijenata 24/7, pomaže im da zakažu termine, šalje podsetni ke, i pruža podršku na više jezika. AI uči iz vaših podataka da pruži personalizovana iskustva.</p>"
+            "question": "How does the AI assistant work?",
+            "answer": "<p>Our AI assistant automatically answers customer questions 24/7, helps them book appointments, sends reminders, and provides support in multiple languages. The AI learns from your data to provide personalized experiences.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Da li mogu otkazati u bilo kom trenutku?",
-            "answer": "<p>Apsolutno! Nema ugovora ili obaveza. Možete otkazati pretplatu bilo kada jednim klikom. Vaši podaci ostaju dostupni 30 dana nakon otkazivanja.</p>"
+            "question": "Can I cancel at any time?",
+            "answer": "<p>Absolutely! No contracts or commitments. You can cancel your subscription anytime with one click. Your data remains accessible for 30 days after cancellation.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Da li je setup komplikovan?",
-            "answer": "<p>Uopšte! Većina korisnika postavlja Sleek za manje od 10 minuta. Pratite naš jednostavan wizard koji vas vodi korak po korak. Takođe nudimo besplatnu pomoć u setupu za Enterprise korisnike.</p>"
+            "question": "Is the setup complicated?",
+            "answer": "<p>Not at all! Most users set up Sleek in less than 10 minutes. Follow our simple wizard that guides you step by step. We also offer free setup assistance for Enterprise users.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Koje vrste notifikacija mogu slati?",
-            "answer": "<p>Možete slati SMS i email notifikacije za: potvrde termina, podsetni ke 24h pre, posle termine follow-up poruke, rođendanske poruke, promocije i custom poruke po vašem izboru.</p>"
+            "question": "What types of notifications can I send?",
+            "answer": "<p>You can send SMS and email notifications for: appointment confirmations, reminders 24h before, post-appointment follow-ups, birthday messages, promotions and custom messages of your choice.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Da li je moj podataka siguran?",
-            "answer": "<p>Apsolutno! Koristimo bank-level SSL enkripciju, usklađeni smo sa GDPR propisima, redovno radimo security audit-e i backup-ujemo podatke svakodnevno. Vaši podaci su u sigurnim rukama.</p>"
+            "question": "Is my data secure?",
+            "answer": "<p>Absolutely! We use bank-level SSL encryption, comply with GDPR regulations, conduct regular security audits and backup data daily. Your data is in safe hands.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Koja je razlika između paketa?",
-            "answer": "<p>Glavni razlika je u broju termina mesečno i broju korisnika. Svi paketi imaju pristup osnovnim funkcijama. Professional dodaje AI asistenta i naprednu analitiku, dok Enterprise nudi dedicirani support i custom integracije.</p>"
+            "question": "What's the difference between plans?",
+            "answer": "<p>The main difference is in the number of appointments per month and number of users. All plans have access to basic features. Professional adds AI assistant and advanced analytics, while Enterprise offers dedicated support and custom integrations.</p>"
           }
         }
       ]
