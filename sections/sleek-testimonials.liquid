@@ -26,7 +26,7 @@
           </div>
           <div class="sleek-stat-content">
             <div class="sleek-stat-number">{{ section.settings.stat_rating }}</div>
-            <div class="sleek-stat-label">Prosečna ocena</div>
+            <div class="sleek-stat-label">Average Rating</div>
           </div>
         </div>
         
@@ -40,7 +40,7 @@
           </div>
           <div class="sleek-stat-content">
             <div class="sleek-stat-number">{{ section.settings.stat_users }}</div>
-            <div class="sleek-stat-label">Zadovoljnih korisnika</div>
+            <div class="sleek-stat-label">Happy Customers</div>
           </div>
         </div>
         
@@ -52,7 +52,7 @@
           </div>
           <div class="sleek-stat-content">
             <div class="sleek-stat-number">{{ section.settings.stat_satisfaction }}</div>
-            <div class="sleek-stat-label">Zadovoljstvo</div>
+            <div class="sleek-stat-label">Satisfaction Rate</div>
           </div>
         </div>
       </div>
@@ -150,7 +150,6 @@
   position: relative;
 }
 
-/* Header */
 .sleek-testimonials-header {
   text-align: center;
   max-width: 700px;
@@ -190,7 +189,6 @@
   margin: 0;
 }
 
-/* Stats Bar */
 .sleek-testimonials-stats {
   display: grid;
   grid-template-columns: 1fr;
@@ -244,7 +242,6 @@
   color: var(--sleek-gray-600);
 }
 
-/* Testimonials Grid */
 .sleek-testimonials-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -265,7 +262,6 @@
   }
 }
 
-/* Testimonial Card */
 .sleek-testimonial-card {
   padding: 32px;
   display: flex;
@@ -280,7 +276,6 @@
   box-shadow: var(--shadow-2xl);
 }
 
-/* Rating */
 .sleek-testimonial-rating {
   display: flex;
   gap: 4px;
@@ -294,7 +289,6 @@
   color: var(--sleek-warning);
 }
 
-/* Quote */
 .sleek-testimonial-quote {
   position: relative;
   flex-grow: 1;
@@ -317,7 +311,6 @@
   z-index: 1;
 }
 
-/* Author */
 .sleek-testimonial-author {
   display: flex;
   align-items: center;
@@ -392,7 +385,6 @@
   margin: 4px 0 0;
 }
 
-/* Platform Badge */
 .sleek-platform-badge {
   position: absolute;
   top: 16px;
@@ -406,7 +398,6 @@
   color: var(--sleek-gray-600);
 }
 
-/* CTA */
 .sleek-testimonials-cta {
   text-align: center;
   padding: 48px;
@@ -422,7 +413,6 @@
   margin: 0 0 24px;
 }
 
-/* Animations */
 .sleek-testimonial-card {
   animation: fadeInUp 0.6s ease-out backwards;
 }
@@ -443,19 +433,19 @@
       "type": "text",
       "id": "badge_text",
       "label": "Badge Text",
-      "default": "Šta kažu naši korisnici"
+      "default": "Customer Stories"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Pridružite se Hiljadama Zadovoljnih Korisnika"
+      "default": "Join Thousands of Happy Customers"
     },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Realne priče od realnih korisnika koji su transformisali svoj način rada sa Sleek sistemom."
+      "default": "Real stories from real users who transformed their business with Sleek."
     },
     {
       "type": "header",
@@ -499,13 +489,13 @@
       "type": "text",
       "id": "cta_title",
       "label": "CTA Title",
-      "default": "Spremni da postanete sledeća success priča?"
+      "default": "Ready to become our next success story?"
     },
     {
       "type": "text",
       "id": "cta_button_text",
       "label": "CTA Button Text",
-      "default": "Započni Besplatno"
+      "default": "Start Free Trial"
     },
     {
       "type": "url",
@@ -531,7 +521,7 @@
           "type": "textarea",
           "id": "testimonial_text",
           "label": "Testimonial Text",
-          "default": "Sleek je potpuno promenio način na koji upravljam svojim salonom. Klijenti obožavaju koliko je lako zakazati termine!"
+          "default": "Sleek completely transformed how I manage my salon. Clients love how easy it is to book appointments!"
         },
         {
           "type": "image_picker",
@@ -542,19 +532,19 @@
           "type": "text",
           "id": "author_name",
           "label": "Author Name",
-          "default": "Ana Jovanović"
+          "default": "Sarah Johnson"
         },
         {
           "type": "text",
           "id": "author_role",
           "label": "Author Role",
-          "default": "Vlasnica salona"
+          "default": "Salon Owner"
         },
         {
           "type": "text",
           "id": "company_name",
           "label": "Company Name (optional)",
-          "default": "Beauty Studio Ana"
+          "default": "Glamour Beauty Studio"
         },
         {
           "type": "checkbox",
@@ -579,9 +569,9 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "testimonial_text": "Sleek je revolucionisao moj salon! Rezervacije su porasle za 40% jer klijenti mogu zakazati 24/7. AI asistent je neverovatno koristan!",
-            "author_name": "Marija Petrović",
-            "author_role": "Vlasnica salona",
+            "testimonial_text": "Sleek revolutionized my salon! Bookings increased 40% because clients can book 24/7. The AI assistant is incredibly helpful!",
+            "author_name": "Maria Garcia",
+            "author_role": "Salon Owner",
             "company_name": "Salon Elegance",
             "platform": "Google"
           }
@@ -590,10 +580,10 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "testimonial_text": "Konačno sistem koji zapravo radi! Automatske notifikacije su smanjile no-show za 80%. Najviše volim kalendar sinhronizaciju.",
-            "author_name": "Nikola Jovanović",
-            "author_role": "Stomatolog",
-            "company_name": "Dental Clinic Dr. Jovanović",
+            "testimonial_text": "Finally a system that actually works! Automatic notifications reduced no-shows by 80%. Love the calendar sync most.",
+            "author_name": "Dr. Michael Chen",
+            "author_role": "Dentist",
+            "company_name": "Chen Dental Clinic",
             "platform": "Trustpilot"
           }
         },
@@ -601,20 +591,20 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "testimonial_text": "Kao freelance konsultant, Sleek mi je omogućio da izgledam profesionalno. Klijenti su impresionirani sistemom zakazivanja!",
-            "author_name": "Stefan Marković",
+            "testimonial_text": "As a freelance consultant, Sleek made me look professional. Clients are impressed with the booking system!",
+            "author_name": "James Wilson",
             "author_role": "Business Consultant",
-            "company_name": "SM Consulting"
+            "company_name": "Wilson Consulting"
           }
         },
         {
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "testimonial_text": "Prešli smo sa Excel tabela na Sleek i nikad nismo bili efikasniji. Tim obožava koliko je jednostavan za korišćenje!",
-            "author_name": "Jelena Nikolić",
-            "author_role": "Menadžer",
-            "company_name": "Fitness Studio ProBody",
+            "testimonial_text": "We switched from Excel to Sleek and never been more efficient. The team loves how simple it is!",
+            "author_name": "Lisa Thompson",
+            "author_role": "Manager",
+            "company_name": "FitLife Gym",
             "platform": "Capterra"
           }
         },
@@ -622,19 +612,19 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "testimonial_text": "Najbolja investicija za moj restoran! Gosti mogu rezervisati stolove online, a mi imamo potpunu kontrolu nad kapacitetom.",
-            "author_name": "Milan Đorđević",
-            "author_role": "Vlasnik restorana",
-            "company_name": "Restoran Tri Lista"
+            "testimonial_text": "Best investment for my restaurant! Guests can book tables online and we have full control over capacity.",
+            "author_name": "Antonio Rossi",
+            "author_role": "Restaurant Owner",
+            "company_name": "Bella Vista"
           }
         },
         {
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "testimonial_text": "Sleek analitika mi je pomogla da optimizujem radno vreme i povećam prihode za 35%. Preporuka svima!",
-            "author_name": "Ivana Pavlović",
-            "author_role": "Kozmetičar",
+            "testimonial_text": "Sleek analytics helped me optimize my schedule and increase revenue by 35%. Highly recommend!",
+            "author_name": "Emma Davis",
+            "author_role": "Beautician",
             "company_name": "Beauty Lab",
             "platform": "Google"
           }
