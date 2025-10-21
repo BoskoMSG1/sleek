@@ -1,0 +1,433 @@
+<div class="sleek-about-page">
+  
+  <!-- Hero Section -->
+  <section class="sleek-about-hero sleek-section">
+    <div class="sleek-container-narrow">
+      <div class="sleek-about-hero-content">
+        <span class="sleek-about-badge">About Us</span>
+        <h1 class="sleek-about-hero-title">{{ page.title }}</h1>
+        {% if page.content != blank %}
+          <div class="sleek-about-hero-text">
+            {{ page.content }}
+          </div>
+        {% else %}
+          <p class="sleek-about-hero-text">
+            We're revolutionizing how businesses manage bookings with our premium, AI-powered platform.
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="sleek-about-stats sleek-section">
+    <div class="sleek-container">
+      <div class="sleek-stats-grid">
+        <div class="sleek-stat-card sleek-glass-card">
+          <div class="sleek-stat-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="sleek-stat-number">10,000+</div>
+          <div class="sleek-stat-label">Happy Customers</div>
+        </div>
+
+        <div class="sleek-stat-card sleek-glass-card">
+          <div class="sleek-stat-icon" style="background: linear-gradient(135deg, #34C759, #30D158);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="sleek-stat-number">500M+</div>
+          <div class="sleek-stat-label">Bookings Processed</div>
+        </div>
+
+        <div class="sleek-stat-card sleek-glass-card">
+          <div class="sleek-stat-icon" style="background: linear-gradient(135deg, #FF9500, #FFB800);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="sleek-stat-number">4.9/5</div>
+          <div class="sleek-stat-label">Average Rating</div>
+        </div>
+
+        <div class="sleek-stat-card sleek-glass-card">
+          <div class="sleek-stat-icon" style="background: linear-gradient(135deg, #5856D6, #8E44AD);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="sleek-stat-number">50+</div>
+          <div class="sleek-stat-label">Countries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="sleek-about-story sleek-section">
+    <div class="sleek-container">
+      <div class="sleek-story-grid">
+        <div class="sleek-story-content">
+          <h2 class="sleek-story-title">Our Story</h2>
+          <div class="sleek-story-text">
+            <p>
+              Founded in 2020, Sleek was born from a simple observation: booking systems were outdated, 
+              complicated, and frustrating for both businesses and customers.
+            </p>
+            <p>
+              We set out to create something different—a booking platform that's as beautiful as it is 
+              powerful, combining the elegance of Apple's design philosophy with cutting-edge AI technology.
+            </p>
+            <p>
+              Today, thousands of businesses worldwide trust Sleek to manage their appointments, 
+              delight their customers, and grow their revenue. But we're just getting started.
+            </p>
+          </div>
+        </div>
+        <div class="sleek-story-visual">
+          <div class="sleek-story-card sleek-glass-card sleek-float">
+            <div class="sleek-story-card-header">
+              <div class="sleek-story-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="sleek-story-card-content">
+              <div class="sleek-code-line"></div>
+              <div class="sleek-code-line" style="width: 80%;"></div>
+              <div class="sleek-code-line" style="width: 90%;"></div>
+              <div class="sleek-code-line" style="width: 70%;"></div>
+              <div class="sleek-code-line" style="width: 85%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="sleek-about-values sleek-section">
+    <div class="sleek-container">
+      <div class="sleek-values-header">
+        <h2 class="sleek-values-title">Our Values</h2>
+        <p class="sleek-values-subtitle">The principles that guide everything we do</p>
+      </div>
+
+      <div class="sleek-values-grid">
+        <div class="sleek-value-card sleek-glass-card">
+          <div class="sleek-value-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="sleek-value-title">Excellence</h3>
+          <p class="sleek-value-text">
+            We obsess over every detail to create the best booking experience possible.
+          </p>
+        </div>
+
+        <div class="sleek-value-card sleek-glass-card">
+          <div class="sleek-value-icon" style="background: linear-gradient(135deg, #34C759, #30D158);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="sleek-value-title">Customer Focus</h3>
+          <p class="sleek-value-text">
+            Your success is our success. We're here to help you grow your business.
+          </p>
+        </div>
+
+        <div class="sleek-value-card sleek-glass-card">
+          <div class="sleek-value-icon" style="background: linear-gradient(135deg, #FF9500, #FFB800);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2"/>
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="sleek-value-title">Innovation</h3>
+          <p class="sleek-value-text">
+            We constantly push boundaries with AI and modern technology.
+          </p>
+        </div>
+
+        <div class="sleek-value-card sleek-glass-card">
+          <div class="sleek-value-icon" style="background: linear-gradient(135deg, #5856D6, #8E44AD);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="sleek-value-title">Trust</h3>
+          <p class="sleek-value-text">
+            Security and privacy are at the core of everything we build.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="sleek-about-cta sleek-section">
+    <div class="sleek-container">
+      <div class="sleek-cta-box sleek-glass-card">
+        <h2 class="sleek-cta-title">Ready to Transform Your Business?</h2>
+        <p class="sleek-cta-text">
+          Join thousands of businesses using Sleek to manage their bookings better.
+        </p>
+        <div class="sleek-cta-buttons">
+          <a href="/pages/contact" class="sleek-btn sleek-btn-primary">
+            Get Started Today
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="/" class="sleek-btn sleek-btn-glass">
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<style>
+.sleek-about-page {
+  padding-bottom: 80px;
+}
+
+/* Hero */
+.sleek-about-hero {
+  text-align: center;
+  padding-top: 60px;
+}
+
+.sleek-about-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sleek-primary);
+  margin-bottom: 24px;
+}
+
+.sleek-about-hero-title {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  margin: 0 0 24px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sleek-about-hero-text {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--sleek-gray-600);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Stats */
+.sleek-about-stats {
+  padding-top: 0;
+}
+
+.sleek-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.sleek-stat-card {
+  padding: 32px;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.sleek-stat-card:hover {
+  transform: translateY(-8px);
+}
+
+.sleek-stat-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.sleek-stat-number {
+  font-size: 40px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.sleek-stat-label {
+  font-size: 16px;
+  color: var(--sleek-gray-600);
+}
+
+/* Story */
+.sleek-story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (min-width: 990px) {
+  .sleek-story-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.sleek-story-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+
+.sleek-story-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--sleek-gray-700);
+  margin-bottom: 20px;
+}
+
+.sleek-story-card {
+  padding: 24px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.sleek-story-card-header {
+  margin-bottom: 20px;
+}
+
+.sleek-story-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.sleek-story-dots span {
+  width: 12px;
+  height: 12px;
+  background: var(--sleek-primary);
+  border-radius: 50%;
+}
+
+.sleek-story-dots span:nth-child(2) {
+  background: var(--sleek-warning);
+}
+
+.sleek-story-dots span:nth-child(3) {
+  background: var(--sleek-success);
+}
+
+.sleek-code-line {
+  height: 12px;
+  background: linear-gradient(90deg, var(--sleek-primary), var(--sleek-secondary));
+  border-radius: 4px;
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+/* Values */
+.sleek-values-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sleek-values-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.sleek-values-subtitle {
+  font-size: 18px;
+  color: var(--sleek-gray-600);
+}
+
+.sleek-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.sleek-value-card {
+  padding: 32px;
+}
+
+.sleek-value-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.sleek-value-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.sleek-value-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--sleek-gray-600);
+}
+
+/* CTA */
+.sleek-cta-box {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.sleek-cta-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.sleek-cta-text {
+  font-size: 18px;
+  color: var(--sleek-gray-600);
+  margin: 0 0 32px;
+}
+
+.sleek-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+</style>
