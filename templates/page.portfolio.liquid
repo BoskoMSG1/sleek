@@ -1,0 +1,594 @@
+{% comment %}
+  PORTFOLIO PAGE TEMPLATE
+  Usage: Create a page in Shopify Admin → Pages → Add page → Select template "portfolio"
+{% endcomment %}
+
+<style>
+/* ============================================
+   PORTFOLIO PAGE STYLES
+   ============================================ */
+
+.portfolio-hero {
+  padding: 120px 0 60px;
+  text-align: center;
+  position: relative;
+}
+
+.portfolio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sleek-primary);
+  margin-bottom: 24px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.portfolio-badge svg {
+  color: var(--sleek-primary);
+}
+
+.portfolio-hero h1 {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--sleek-dark), var(--sleek-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 0.6s ease-out 0.1s backwards;
+}
+
+.portfolio-hero-description {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--sleek-gray-600);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+/* Filter Buttons */
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 60px 0 40px;
+  animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+.portfolio-filter-btn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sleek-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.portfolio-filter-btn:hover,
+.portfolio-filter-btn.active {
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 60px auto;
+  max-width: 1400px;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-item:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-item:nth-child(6) { animation-delay: 0.6s; }
+
+.portfolio-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-item-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover .portfolio-item-image {
+  transform: scale(1.05);
+}
+
+.portfolio-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+}
+
+.portfolio-item:hover .portfolio-item-overlay {
+  opacity: 1;
+}
+
+.portfolio-item-category {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+.portfolio-item-content {
+  padding: 24px;
+}
+
+.portfolio-item-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--sleek-dark);
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-item-title {
+  color: var(--sleek-primary);
+}
+
+.portfolio-item-description {
+  font-size: 15px;
+  color: var(--sleek-gray-600);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.portfolio-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.portfolio-tag {
+  padding: 4px 12px;
+  background: rgba(0, 122, 255, 0.1);
+  border-radius: 12px;
+  font-size: 12px;
+  color: var(--sleek-primary);
+  font-weight: 500;
+}
+
+.portfolio-item-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sleek-primary);
+  text-decoration: none;
+  transition: gap 0.3s ease;
+}
+
+.portfolio-item-link:hover {
+  gap: 10px;
+}
+
+/* Load More Button */
+.portfolio-load-more {
+  text-align: center;
+  margin-top: 60px;
+  animation: fadeInUp 0.6s ease-out 0.7s backwards;
+}
+
+.portfolio-load-more-btn {
+  padding: 16px 40px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sleek-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.portfolio-load-more-btn:hover {
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
+}
+
+/* CTA Section */
+.portfolio-cta {
+  text-align: center;
+  padding: 80px 30px;
+  margin: 80px auto 0;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  animation: fadeInUp 0.6s ease-out 0.8s backwards;
+}
+
+.portfolio-cta h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--sleek-dark), var(--sleek-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.portfolio-cta p {
+  font-size: 18px;
+  color: var(--sleek-gray-600);
+  margin-bottom: 32px;
+}
+
+.portfolio-cta-btn {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+.portfolio-cta-btn:hover {
+  box-shadow: 0 6px 25px rgba(0, 122, 255, 0.4);
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-hero {
+    padding: 80px 0 40px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-filters {
+    margin: 40px 0 30px;
+  }
+
+  .portfolio-cta {
+    padding: 60px 20px;
+    margin-top: 60px;
+  }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<div class="sleek-container">
+  
+  <!-- Hero Section -->
+  <div class="portfolio-hero">
+    <div class="portfolio-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Our Work
+    </div>
+    <h1>{{ page.title }}</h1>
+    <p class="portfolio-hero-description">
+      {{ page.content }}
+    </p>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="portfolio-filters">
+    <button class="portfolio-filter-btn active" data-filter="all">All Projects</button>
+    <button class="portfolio-filter-btn" data-filter="web-design">Web Design</button>
+    <button class="portfolio-filter-btn" data-filter="branding">Branding</button>
+    <button class="portfolio-filter-btn" data-filter="mobile-app">Mobile App</button>
+    <button class="portfolio-filter-btn" data-filter="ui-ux">UI/UX</button>
+  </div>
+
+  <!-- Portfolio Grid -->
+  <div class="portfolio-grid">
+    
+    <!-- Portfolio Item 1 -->
+    <div class="portfolio-item" data-category="web-design">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Project 1" class="portfolio-item-image">
+      <div class="portfolio-item-overlay">
+        <span class="portfolio-item-category">Web Design</span>
+      </div>
+      <div class="portfolio-item-content">
+        <h3 class="portfolio-item-title">E-Commerce Platform</h3>
+        <p class="portfolio-item-description">Modern online store with seamless checkout experience</p>
+        <div class="portfolio-item-tags">
+          <span class="portfolio-tag">Shopify</span>
+          <span class="portfolio-tag">React</span>
+          <span class="portfolio-tag">Tailwind</span>
+        </div>
+        <a href="#" class="portfolio-item-link">
+          View Project
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Portfolio Item 2 -->
+    <div class="portfolio-item" data-category="branding">
+      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Project 2" class="portfolio-item-image">
+      <div class="portfolio-item-overlay">
+        <span class="portfolio-item-category">Branding</span>
+      </div>
+      <div class="portfolio-item-content">
+        <h3 class="portfolio-item-title">Tech Startup Identity</h3>
+        <p class="portfolio-item-description">Complete brand identity for innovative tech company</p>
+        <div class="portfolio-item-tags">
+          <span class="portfolio-tag">Logo Design</span>
+          <span class="portfolio-tag">Brand Guide</span>
+        </div>
+        <a href="#" class="portfolio-item-link">
+          View Project
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Portfolio Item 3 -->
+    <div class="portfolio-item" data-category="mobile-app">
+      <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Project 3" class="portfolio-item-image">
+      <div class="portfolio-item-overlay">
+        <span class="portfolio-item-category">Mobile App</span>
+      </div>
+      <div class="portfolio-item-content">
+        <h3 class="portfolio-item-title">Fitness Tracking App</h3>
+        <p class="portfolio-item-description">iOS & Android app with AI-powered workout recommendations</p>
+        <div class="portfolio-item-tags">
+          <span class="portfolio-tag">React Native</span>
+          <span class="portfolio-tag">Firebase</span>
+        </div>
+        <a href="#" class="portfolio-item-link">
+          View Project
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Portfolio Item 4 -->
+    <div class="portfolio-item" data-category="ui-ux">
+      <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" alt="Project 4" class="portfolio-item-image">
+      <div class="portfolio-item-overlay">
+        <span class="portfolio-item-category">UI/UX</span>
+      </div>
+      <div class="portfolio-item-content">
+        <h3 class="portfolio-item-title">Banking Dashboard</h3>
+        <p class="portfolio-item-description">Intuitive financial dashboard with real-time analytics</p>
+        <div class="portfolio-item-tags">
+          <span class="portfolio-tag">Figma</span>
+          <span class="portfolio-tag">User Research</span>
+        </div>
+        <a href="#" class="portfolio-item-link">
+          View Project
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Portfolio Item 5 -->
+    <div class="portfolio-item" data-category="web-design">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop" alt="Project 5" class="portfolio-item-image">
+      <div class="portfolio-item-overlay">
+        <span class="portfolio-item-category">Web Design</span>
+      </div>
+      <div class="portfolio-item-content">
+        <h3 class="portfolio-item-title">Restaurant Website</h3>
+        <p class="portfolio-item-description">Elegant website with online reservation system</p>
+        <div class="portfolio-item-tags">
+          <span class="portfolio-tag">WordPress</span>
+          <span class="portfolio-tag">Custom Theme</span>
+        </div>
+        <a href="#" class="portfolio-item-link">
+          View Project
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Portfolio Item 6 -->
+    <div class="portfolio-item" data-category="branding">
+      <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=400&fit=crop" alt="Project 6" class="portfolio-item-image">
+      <div class="portfolio-item-overlay">
+        <span class="portfolio-item-category">Branding</span>
+      </div>
+      <div class="portfolio-item-content">
+        <h3 class="portfolio-item-title">Coffee Brand Packaging</h3>
+        <p class="portfolio-item-description">Sustainable packaging design for premium coffee brand</p>
+        <div class="portfolio-item-tags">
+          <span class="portfolio-tag">Illustrator</span>
+          <span class="portfolio-tag">Photoshop</span>
+        </div>
+        <a href="#" class="portfolio-item-link">
+          View Project
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Load More Button -->
+  <div class="portfolio-load-more">
+    <button class="portfolio-load-more-btn">
+      Load More Projects
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="portfolio-cta">
+    <h2>Have a Project in Mind?</h2>
+    <p>Let's work together to create something amazing</p>
+    <a href="/pages/contact" class="portfolio-cta-btn">
+      Start Your Project
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+
+</div>
+
+<script>
+// Portfolio Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Remove active class from all buttons
+      filterBtns.forEach(b => b.classList.remove('active'));
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      const filter = this.getAttribute('data-filter');
+      
+      portfolioItems.forEach(item => {
+        if (filter === 'all') {
+          item.style.display = 'block';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, 10);
+        } else {
+          const category = item.getAttribute('data-category');
+          if (category === filter) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+            }, 10);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 300);
+          }
+        }
+      });
+    });
+  });
+  
+  // Load More Button
+  const loadMoreBtn = document.querySelector('.portfolio-load-more-btn');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', function() {
+      alert('Load more functionality - connect to your Shopify products or collections!');
+    });
+  }
+});
+</script>
