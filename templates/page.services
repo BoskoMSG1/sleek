@@ -1,0 +1,795 @@
+{% comment %}
+  SERVICES PAGE TEMPLATE
+  Usage: Create a page in Shopify Admin → Pages → Add page → Select template "services"
+{% endcomment %}
+
+<style>
+/* ============================================
+   SERVICES PAGE STYLES
+   ============================================ */
+
+.services-hero {
+  padding: 120px 0 60px;
+  text-align: center;
+}
+
+.services-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sleek-primary);
+  margin-bottom: 24px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.services-badge svg {
+  color: var(--sleek-primary);
+}
+
+.services-hero h1 {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--sleek-dark), var(--sleek-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 0.6s ease-out 0.1s backwards;
+}
+
+.services-hero-description {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--sleek-gray-600);
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+/* Main Services Grid */
+.services-main-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 80px auto;
+  max-width: 1200px;
+}
+
+.service-main-card {
+  padding: 50px 40px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.service-main-card:nth-child(1) { animation-delay: 0.3s; }
+.service-main-card:nth-child(2) { animation-delay: 0.4s; }
+.service-main-card:nth-child(3) { animation-delay: 0.5s; }
+.service-main-card:nth-child(4) { animation-delay: 0.6s; }
+
+.service-main-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sleek-primary), var(--sleek-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.service-main-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-main-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease;
+}
+
+.service-main-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-icon svg {
+  color: white;
+}
+
+.service-main-card h3 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--sleek-dark);
+  margin-bottom: 16px;
+}
+
+.service-main-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--sleek-gray-600);
+  margin-bottom: 24px;
+}
+
+.service-features {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.service-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--sleek-gray-600);
+  margin-bottom: 12px;
+}
+
+.service-features li svg {
+  flex-shrink: 0;
+  color: var(--sleek-primary);
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sleek-primary);
+  text-decoration: none;
+  transition: gap 0.3s ease;
+}
+
+.service-link:hover {
+  gap: 12px;
+}
+
+/* Process Section */
+.services-process {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.services-process h2 {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 60px;
+  background: linear-gradient(135deg, var(--sleek-dark), var(--sleek-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 0.6s ease-out 0.7s backwards;
+}
+
+.process-timeline {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--sleek-primary), var(--sleek-secondary));
+  transform: translateX(-50%);
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  position: relative;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.process-step:nth-child(1) { animation-delay: 0.8s; }
+.process-step:nth-child(2) { animation-delay: 0.9s; }
+.process-step:nth-child(3) { animation-delay: 1s; }
+.process-step:nth-child(4) { animation-delay: 1.1s; }
+
+.process-step:nth-child(odd) {
+  flex-direction: row;
+}
+
+.process-step:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.process-content {
+  flex: 1;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.process-step:nth-child(odd) .process-content {
+  margin-right: 30px;
+}
+
+.process-step:nth-child(even) .process-content {
+  margin-left: 30px;
+}
+
+.process-content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.process-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.process-content h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--sleek-dark);
+  margin-bottom: 12px;
+}
+
+.process-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--sleek-gray-600);
+  margin: 0;
+}
+
+/* Tech Stack Section */
+.services-tech {
+  padding: 80px 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 30px;
+  margin: 80px auto;
+  max-width: 1200px;
+}
+
+.services-tech h2 {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--sleek-dark), var(--sleek-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 0.6s ease-out 1.2s backwards;
+}
+
+.services-tech p {
+  font-size: 18px;
+  color: var(--sleek-gray-600);
+  margin-bottom: 50px;
+  animation: fadeInUp 0.6s ease-out 1.3s backwards;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tech-item {
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.tech-item:nth-child(1) { animation-delay: 1.4s; }
+.tech-item:nth-child(2) { animation-delay: 1.45s; }
+.tech-item:nth-child(3) { animation-delay: 1.5s; }
+.tech-item:nth-child(4) { animation-delay: 1.55s; }
+.tech-item:nth-child(5) { animation-delay: 1.6s; }
+.tech-item:nth-child(6) { animation-delay: 1.65s; }
+
+.tech-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--sleek-primary);
+}
+
+.tech-item svg {
+  font-size: 40px;
+  margin-bottom: 12px;
+  color: var(--sleek-primary);
+}
+
+.tech-item span {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sleek-dark);
+}
+
+/* CTA Section */
+.services-cta {
+  text-align: center;
+  padding: 80px 30px;
+  margin: 80px auto 0;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  animation: fadeInUp 0.6s ease-out 1.7s backwards;
+}
+
+.services-cta h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--sleek-dark), var(--sleek-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.services-cta p {
+  font-size: 18px;
+  color: var(--sleek-gray-600);
+  margin-bottom: 32px;
+}
+
+.services-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.services-cta-btn {
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  border: none;
+}
+
+.services-cta-btn-primary {
+  background: linear-gradient(135deg, var(--sleek-primary), var(--sleek-secondary));
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+.services-cta-btn-primary:hover {
+  box-shadow: 0 6px 25px rgba(0, 122, 255, 0.4);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.services-cta-btn-secondary {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--sleek-dark);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.services-cta-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  color: var(--sleek-dark);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .services-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-timeline::before {
+    left: 30px;
+  }
+
+  .process-step,
+  .process-step:nth-child(even) {
+    flex-direction: row;
+  }
+
+  .process-step:nth-child(odd) .process-content,
+  .process-step:nth-child(even) .process-content {
+    margin-left: 30px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-hero {
+    padding: 80px 0 40px;
+  }
+
+  .service-main-card {
+    padding: 40px 30px;
+  }
+
+  .services-cta {
+    padding: 60px 20px;
+  }
+
+  .services-cta-buttons {
+    flex-direction: column;
+  }
+
+  .services-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<div class="sleek-container">
+  
+  <!-- Hero Section -->
+  <div class="services-hero">
+    <div class="services-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      What We Do
+    </div>
+    <h1>{{ page.title }}</h1>
+    <p class="services-hero-description">
+      {{ page.content }}
+    </p>
+  </div>
+
+  <!-- Main Services -->
+  <div class="services-main-grid">
+    
+    <!-- Service 1: Web Design -->
+    <div class="service-main-card">
+      <div class="service-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3>Web Design & Development</h3>
+      <p>Custom websites tailored to your brand, built with the latest technologies and best practices for performance and SEO.</p>
+      <ul class="service-features">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Responsive Design
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          SEO Optimized
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Fast Performance
+        </li>
+      </ul>
+      <a href="#" class="service-link">
+        Learn More
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Service 2: E-Commerce -->
+    <div class="service-main-card">
+      <div class="service-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+          <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+          <circle cx="20" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3>E-Commerce Solutions</h3>
+      <p>Full-featured online stores with secure payment processing, inventory management, and seamless user experience.</p>
+      <ul class="service-features">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Shopify & WooCommerce
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Payment Integration
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Inventory Management
+        </li>
+      </ul>
+      <a href="#" class="service-link">
+        Learn More
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Service 3: Mobile Apps -->
+    <div class="service-main-card">
+      <div class="service-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+          <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Mobile App Development</h3>
+      <p>Native and cross-platform mobile applications for iOS and Android with exceptional user experience.</p>
+      <ul class="service-features">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          iOS & Android
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          React Native & Flutter
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          App Store Publishing
+        </li>
+      </ul>
+      <a href="#" class="service-link">
+        Learn More
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Service 4: Branding -->
+    <div class="service-main-card">
+      <div class="service-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3>Brand Identity & Design</h3>
+      <p>Complete brand identity creation including logo design, color schemes, typography, and brand guidelines.</p>
+      <ul class="service-features">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Logo Design
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Brand Guidelines
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.1"/>
+            <path d="M6 10l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Marketing Materials
+        </li>
+      </ul>
+      <a href="#" class="service-link">
+        Learn More
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Process Section -->
+  <div class="services-process">
+    <h2>Our Process</h2>
+    <div class="process-timeline">
+      
+      <div class="process-step">
+        <div class="process-content">
+          <h3>Discovery & Planning</h3>
+          <p>We start by understanding your business goals, target audience, and project requirements through detailed consultations.</p>
+        </div>
+        <div class="process-number">1</div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-content">
+          <h3>Design & Prototype</h3>
+          <p>Our designers create wireframes and mockups, refining the visual direction until you're completely satisfied.</p>
+        </div>
+        <div class="process-number">2</div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-content">
+          <h3>Development & Testing</h3>
+          <p>Clean, efficient code brought to life with rigorous testing across all devices and browsers.</p>
+        </div>
+        <div class="process-number">3</div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-content">
+          <h3>Launch & Support</h3>
+          <p>We deploy your project and provide ongoing support and maintenance to ensure everything runs smoothly.</p>
+        </div>
+        <div class="process-number">4</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tech Stack -->
+  <div class="services-tech">
+    <h2>Technologies We Use</h2>
+    <p>We work with cutting-edge tools and frameworks</p>
+    <div class="tech-grid">
+      
+      <div class="tech-item">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        <span>React</span>
+      </div>
+
+      <div class="tech-item">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+        </svg>
+        <span>Node.js</span>
+      </div>
+
+      <div class="tech-item">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        </svg>
+        <span>Shopify</span>
+      </div>
+
+      <div class="tech-item">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        </svg>
+        <span>WordPress</span>
+      </div>
+
+      <div class="tech-item">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        </svg>
+        <span>Figma</span>
+      </div>
+
+      <div class="tech-item">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        </svg>
+        <span>Tailwind CSS</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="services-cta">
+    <h2>Ready to Start Your Project?</h2>
+    <p>Let's discuss how we can help bring your vision to life</p>
+    <div class="services-cta-buttons">
+      <a href="/pages/contact" class="services-cta-btn services-cta-btn-primary">
+        Get Started
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <a href="/pages/portfolio" class="services-cta-btn services-cta-btn-secondary">
+        View Our Work
+      </a>
+    </div>
+  </div>
+
+</div>
